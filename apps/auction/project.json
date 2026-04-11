@@ -8,7 +8,9 @@
   "targets": {
     "build": {
       "executor": "@angular/build:application",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/auction",
         "browser": "apps/auction/src/main.ts",
@@ -18,9 +20,18 @@
           {
             "glob": "**/*",
             "input": "apps/auction/public"
+          },
+          {
+            "glob": "**/*",
+            "input": "node_modules/@taiga-ui/icons/src",
+            "output": "assets/taiga-ui/icons"
           }
         ],
-        "styles": ["apps/auction/src/styles.scss"]
+        "styles": [
+          "node_modules/@taiga-ui/styles/taiga-ui-theme.less",
+          "node_modules/@taiga-ui/styles/taiga-ui-fonts.less",
+          "apps/auction/src/styles.scss"
+        ]
       },
       "configurations": {
         "production": {
