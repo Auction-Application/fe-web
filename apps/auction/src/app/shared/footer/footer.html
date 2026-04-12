@@ -1,0 +1,49 @@
+<footer class="site-footer">
+  <div class="site-footer__grid">
+
+    <!-- Brand -->
+    <div class="site-footer__brand">
+      <span class="site-footer__logo">AUCTION PRO</span>
+      <p class="site-footer__tagline">
+        The premier destination for the acquisition of world-class artifacts,
+        fine art, and contemporary digital assets.
+      </p>
+    </div>
+
+    <!-- Platform links -->
+    <div class="site-footer__col">
+      <span class="site-footer__col-heading">Platform</span>
+      <nav aria-label="Platform links">
+        @for (link of platformLinks; track link.path) {
+          <a class="site-footer__link" [routerLink]="link.path">
+            {{ link.label }}
+          </a>
+        }
+      </nav>
+    </div>
+
+    <!-- Legal links -->
+    <div class="site-footer__col">
+      <span class="site-footer__col-heading">Legal</span>
+      <nav aria-label="Legal links">
+        @for (link of legalLinks; track link.path) {
+          <a class="site-footer__link" [routerLink]="link.path">
+            {{ link.label }}
+          </a>
+        }
+      </nav>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="site-footer__col">
+      <span class="site-footer__col-heading">Newsletter</span>
+      <app-newsletter-input (subscribe)="onNewsletterSubscribe($event)" />
+    </div>
+
+  </div>
+
+  <!-- Copyright bar -->
+  <div class="site-footer__copyright">
+    <span>&copy; 2024 AUCTION PRO. ALL RIGHTS RESERVED.</span>
+  </div>
+</footer>

@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'scss/variables' as *;
+@use 'scss/grid';
+@use 'scss/spacing';
+@use 'scss/typography';
+
+// ─── Global Reset & Base ─────────────────────────────────────────────────────
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: $font-body;
+  background-color: $surface-container-lowest; // #ffffff — override Taiga UI dark theme default
+  color: $on-surface;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}

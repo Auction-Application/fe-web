@@ -1,0 +1,218 @@
+@use '../../../scss/variables' as *;
+
+// ─── Section shell ────────────────────────────────────────────────────────────
+.login__form-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login__form-wrap {
+  width: 100%;
+  max-width: 32rem;
+}
+
+// ─── Header ──────────────────────────────────────────────────────────────────
+.login__form-header {
+  margin-bottom: 2.5rem;
+}
+
+.login__eyebrow {
+  display: block;
+  font-family: $font-headline;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $on-primary-container;
+  margin-bottom: 0.5rem;
+}
+
+.login__title {
+  font-family: $font-headline;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: $on-surface;
+}
+
+// ─── Form fields ─────────────────────────────────────────────────────────────
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.login__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.login__label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login__label {
+  font-family: $font-label;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $on-surface-variant;
+}
+
+.login__forgot {
+  font-family: $font-headline;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $on-primary-container;
+  text-decoration: none;
+  transition: color 150ms ease;
+
+  &:hover {
+    color: $on-surface;
+  }
+}
+
+.login__input {
+  width: 100%;
+  background: $surface-container-low;
+  border: none;
+  outline: none;
+  border-radius: $radius-md;
+  padding: 0.875rem 1rem;
+  font-family: $font-body;
+  font-size: 0.875rem;
+  color: $on-surface;
+  transition: box-shadow 150ms ease;
+
+  &::placeholder {
+    color: $outline;
+    opacity: 0.7;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px rgba($tertiary-fixed, 0.4);
+  }
+}
+
+// ─── Submit ───────────────────────────────────────────────────────────────────
+.login__submit {
+  &[tuiButton] {
+    width: 100%;
+    background: $gradient-primary-cta !important;
+    color: $on-primary !important;
+    font-family: $font-headline;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: $radius-md;
+    padding-block: 1rem;
+    border: none;
+    transition:
+      opacity 150ms ease,
+      transform 100ms ease;
+
+    &:hover {
+      opacity: 0.92;
+      transform: scale(1.005);
+    }
+
+    &:active {
+      transform: scale(0.998);
+    }
+  }
+}
+
+// ─── Divider ─────────────────────────────────────────────────────────────────
+.login__divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba($outline-variant, 0.35);
+  }
+}
+
+.login__divider-text {
+  flex-shrink: 0;
+  padding-inline: 1rem;
+  font-family: $font-body;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $outline;
+}
+
+// ─── Social buttons (side by side) ───────────────────────────────────────────
+.login__social {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.login__social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 0.75rem 1rem;
+  background: $surface-container-low;
+  border: 1px solid rgba($outline-variant, 0.1);
+  border-radius: $radius-md;
+  font-family: $font-headline;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $on-surface;
+  cursor: pointer;
+  transition: background 150ms ease;
+
+  &:hover {
+    background: $surface-container;
+  }
+}
+
+.login__social-icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0;
+}
+
+// ─── Footer note ─────────────────────────────────────────────────────────────
+.login__footer-note {
+  text-align: center;
+  font-family: $font-body;
+  font-size: 0.8125rem;
+  color: $on-surface-variant;
+}
+
+.login__footer-link {
+  font-weight: 600;
+  color: $on-surface;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: rgba($outline-variant, 0.5);
+  transition: text-decoration-color 150ms ease;
+
+  &:hover {
+    text-decoration-color: $on-surface;
+  }
+}

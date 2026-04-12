@@ -1,0 +1,49 @@
+@use '../../../scss/variables' as *;
+
+:host {
+  display: block;
+}
+
+.newsletter-input {
+  &__wrapper {
+    position: relative;
+  }
+
+  // tui-textfield fills full width; pad the right so text never slides under the button
+  &__field {
+    display: block;
+    width: 100%;
+
+    // Override Taiga UI's token so typed text is dark on our light background
+    --tui-text-primary: #{$on-surface};
+
+    input[tuiInput] {
+      padding-right: 3rem;
+      color: $on-surface;
+
+      &::placeholder {
+        color: $on-surface-variant;
+        opacity: 1;
+      }
+    }
+  }
+
+  // Button floats inside the textfield on the right, vertically centred
+  &__submit {
+    position: absolute;
+    right: 0.3rem;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &[tuiIconButton] {
+      background: $gradient-primary-cta !important;
+      color: $on-primary !important;
+      border-radius: $radius-lg;
+      transition: opacity 150ms ease;
+
+      &:hover {
+        opacity: 0.88;
+      }
+    }
+  }
+}

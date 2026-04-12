@@ -1,0 +1,37 @@
+<form class="newsletter-input" (ngSubmit)="onSubmit()">
+  <div class="newsletter-input__wrapper">
+    <tui-textfield class="newsletter-input__field">
+      <input
+        tuiInput
+        type="text"
+        placeholder="Your Email"
+        [(ngModel)]="email"
+        name="newsletterEmail"
+        autocomplete="email"
+      />
+    </tui-textfield>
+
+    <button
+      tuiIconButton
+      type="submit"
+      appearance="primary"
+      size="s"
+      class="newsletter-input__submit"
+      aria-label="Subscribe to newsletter"
+    >
+      <tui-icon icon="@tui.arrow-right" />
+    </button>
+  </div>
+</form>
+
+<!-- <tui-textfield iconStart="@tui.search">
+  <label tuiLabel for="email">Read-only</label>
+  <input
+    placeholder="I am placeholder"
+    tuiInput
+    [readOnly]="true"
+    [(ngModel)]="email"
+    id="email"
+  />
+  <tui-icon tuiTooltip="Readonly shows tooltip" />
+</tui-textfield> -->

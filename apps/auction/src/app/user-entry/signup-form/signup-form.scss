@@ -1,0 +1,210 @@
+@use '../../../scss/variables' as *;
+
+// ─── Form section (right) ────────────────────────────────────────────────────
+.signup__form-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup__form-wrap {
+  width: 100%;
+  max-width: 32rem;
+}
+
+// ─── Header ──────────────────────────────────────────────────────────────────
+.signup__form-header {
+  margin-bottom: 2rem;
+}
+
+.signup__title {
+  font-family: $font-headline;
+  font-size: 1.875rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: $on-surface;
+  margin-bottom: 0.375rem;
+}
+
+.signup__subtitle {
+  font-family: $font-body;
+  font-size: 0.875rem;
+  color: $on-surface-variant;
+}
+
+.signup__signin-link {
+  font-weight: 600;
+  color: $on-surface;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba($outline-variant, 0.6);
+  transition: text-decoration-color 150ms ease;
+
+  &:hover {
+    text-decoration-color: $on-surface;
+  }
+}
+
+// ─── Social buttons ───────────────────────────────────────────────────────────
+.signup__social {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.signup__social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: $surface-container-lowest;
+  border: 1px solid rgba($outline-variant, 0.2);
+  border-radius: $radius-lg;
+  font-family: $font-headline;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $on-surface;
+  cursor: pointer;
+  transition: background 150ms ease;
+
+  &:hover {
+    background: $surface-container-low;
+  }
+}
+
+.signup__social-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+// ─── Divider ─────────────────────────────────────────────────────────────────
+.signup__divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba($outline-variant, 0.35);
+  }
+}
+
+.signup__divider-text {
+  flex-shrink: 0;
+  padding-inline: 1rem;
+  font-family: $font-body;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $outline;
+}
+
+// ─── Form fields ─────────────────────────────────────────────────────────────
+.signup__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.signup__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.signup__label {
+  font-family: $font-label;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $on-surface-variant;
+}
+
+.signup__input {
+  width: 100%;
+  background: $surface-container-low;
+  border: none;
+  outline: none;
+  border-radius: $radius-md;
+  padding: 0.875rem 1rem;
+  font-family: $font-body;
+  font-size: 0.875rem;
+  color: $on-surface;
+  transition: box-shadow 150ms ease;
+
+  &::placeholder {
+    color: $outline;
+    opacity: 0.7;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px rgba($tertiary-fixed, 0.4);
+  }
+}
+
+// ─── Terms ───────────────────────────────────────────────────────────────────
+.signup__terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+}
+
+.signup__checkbox {
+  margin-top: 0.125rem;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  accent-color: $on-surface;
+}
+
+.signup__terms-label {
+  font-family: $font-body;
+  font-size: 0.8125rem;
+  color: $on-surface-variant;
+  line-height: 1.5;
+}
+
+.signup__terms-link {
+  color: $on-surface;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+// ─── CTA ─────────────────────────────────────────────────────────────────────
+.signup__submit {
+  &[tuiButton] {
+    width: 100%;
+    background: $gradient-primary-cta !important;
+    color: $on-primary !important;
+    font-family: $font-headline;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: $radius-md;
+    padding-block: 1rem;
+    border: none;
+    margin-top: 0.25rem;
+    transition:
+      opacity 150ms ease,
+      transform 100ms ease;
+
+    &:hover {
+      opacity: 0.92;
+      transform: scale(1.005);
+    }
+
+    &:active {
+      transform: scale(0.998);
+    }
+  }
+}

@@ -1,0 +1,57 @@
+<header class="site-header">
+  <div class="site-header__container">
+
+    <!-- Logo -->
+    <a class="site-header__logo" routerLink="/">AUCTION PRO</a>
+
+    <!-- Primary Navigation -->
+    <nav class="site-header__nav" aria-label="Primary navigation">
+      @for (item of navItems; track item.path) {
+        <a
+          class="site-header__nav-link"
+          [routerLink]="item.path"
+          routerLinkActive="site-header__nav-link--active"
+        >
+          {{ item.label }}
+        </a>
+      }
+    </nav>
+
+    <!-- Actions -->
+    <div class="site-header__actions">
+
+      <!-- Notification icons -->
+      <div class="site-header__icon-group">
+        <button tuiIconButton type="button" appearance="ghost" size="s" class="site-header__icon-btn">
+          <tui-icon icon="@tui.bell" />
+        </button>
+        <button tuiIconButton type="button" appearance="ghost" size="s" class="site-header__icon-btn">
+          <tui-icon icon="@tui.heart" />
+        </button>
+        <!-- Slot for additional notification-type icons -->
+        <ng-content select="[headerNotificationIcons]" />
+      </div>
+
+      <!-- Profile icon -->
+      <div class="site-header__icon-group">
+        <button tuiIconButton type="button" appearance="ghost" size="s" class="site-header__icon-btn">
+          <tui-icon icon="@tui.circle-user-round" />
+        </button>
+        <!-- Slot for custom profile icon override -->
+        <ng-content select="[headerProfileIcon]" />
+      </div>
+
+      <!-- Primary CTA -->
+      <button
+        tuiButton
+        type="button"
+        class="site-header__cta"
+        appearance="primary"
+        size="m"
+      >
+        Place Bid
+      </button>
+    </div>
+
+  </div>
+</header>
