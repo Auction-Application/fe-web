@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "launch debug auction customer",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "npm: auction:serve",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}",
+      "runtimeExecutable": "/usr/bin/brave-browser"
+    },
+    {
+      "name": "attach debug auction customer",
+      "type": "chrome",
+      "request": "attach",
+      "port": 9222,
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+}

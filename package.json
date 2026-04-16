@@ -2,7 +2,9 @@
   "name": "@auction/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "auction:serve": "nx run auction:serve"
+  },
   "private": true,
   "dependencies": {
     "@angular/common": "~21.2.0",
