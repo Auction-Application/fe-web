@@ -7,7 +7,7 @@
 
     <!-- Email / password form -->
     <form class="login__form" (ngSubmit)="loginUser()" [formGroup]="loginForm">
-      <div class="login__field">
+      <!-- <div class="login__field">
         <label class="login__label" for="login-email">Email Address</label>
         <input
           class="login__input"
@@ -18,9 +18,19 @@
           libValidationMessage
           formControlName="email"
         />
-      </div>
+      </div> -->
 
-      <div class="login__field">
+      <tui-textfield iconStart="@tui.mail">
+        <label tuiLabel for="email">Email Address</label>
+        <input
+          id="email"
+          placeholder="Enter Email Address"
+          tuiInput
+          formControlName="email"
+        />
+      </tui-textfield>
+
+      <!-- <div class="login__field">
         <div class="login__label-row">
           <label class="login__label" for="login-password">Password</label>
           <a class="login__forgot" routerLink="/forgot-password"
@@ -36,6 +46,21 @@
           formControlName="password"
           libValidationMessage
         />
+      </div> -->
+      <div class="d-grid gap-1">
+        <a class="login__forgot j-self-end" routerLink="/forgot-password"
+          >Forgot Password?</a
+        >
+        <tui-textfield iconStart="@tui.key-round">
+          <label tuiLabel for="password">Password</label>
+          <input
+            placeholder="Enter Password"
+            tuiInput
+            type="password"
+            formControlName="password"
+          />
+          <tui-icon tuiPassword />
+        </tui-textfield>
       </div>
 
       <button

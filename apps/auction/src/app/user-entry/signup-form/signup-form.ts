@@ -1,8 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { TuiButton } from '@taiga-ui/core';
+import { TuiButton, TuiIcon, TuiInput, TuiLabel } from '@taiga-ui/core';
 import { DynamicValidatorMessage } from '@auction/validators';
+import { TuiPassword } from '@taiga-ui/kit';
 
 @Component({
   selector: 'app-signup-form',
@@ -13,6 +19,11 @@ import { DynamicValidatorMessage } from '@auction/validators';
     TuiButton,
     ReactiveFormsModule,
     DynamicValidatorMessage,
+    TuiInput,
+    TuiPassword,
+    FormsModule,
+    TuiLabel,
+    TuiIcon,
   ],
 })
 export class SignupForm {

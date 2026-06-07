@@ -55,7 +55,7 @@
       (ngSubmit)="signupUser()"
       [formGroup]="signupForm"
     >
-      <div class="signup__field">
+      <!-- <div class="signup__field">
         <label class="signup__label" for="fullname">Full Name</label>
         <input
           class="signup__input"
@@ -66,8 +66,18 @@
           libValidationMessage
           formControlName="fullName"
         />
-      </div>
-      <div class="signup__field">
+      </div> -->
+
+      <tui-textfield iconStart="@tui.user">
+        <label tuiLabel for="username">User Name</label>
+        <input
+          id="username"
+          placeholder="Enter Username"
+          tuiInput
+          formControlName="fullName"
+        />
+      </tui-textfield>
+      <!-- <div class="signup__field">
         <label class="signup__label" for="email">Email Address</label>
         <input
           class="signup__input"
@@ -78,8 +88,18 @@
           libValidationMessage
           formControlName="email"
         />
-      </div>
-      <div class="signup__field">
+      </div> -->
+
+      <tui-textfield iconStart="@tui.mail">
+        <label tuiLabel for="email">Email Address</label>
+        <input
+          id="email"
+          placeholder="Enter Email Address"
+          tuiInput
+          formControlName="email"
+        />
+      </tui-textfield>
+      <!-- <div class="signup__field">
         <label class="signup__label" for="password">Password</label>
         <input
           class="signup__input"
@@ -90,7 +110,18 @@
           libValidationMessage
           formControlName="password"
         />
-      </div>
+      </div> -->
+
+      <tui-textfield iconStart="@tui.key-round">
+        <label tuiLabel for="password">Password</label>
+        <input
+          placeholder="Enter Password"
+          tuiInput
+          type="password"
+          formControlName="password"
+        />
+        <tui-icon tuiPassword />
+      </tui-textfield>
 
       <div class="signup__terms">
         <input class="signup__checkbox" id="terms" type="checkbox" />
