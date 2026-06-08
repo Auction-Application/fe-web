@@ -20,15 +20,23 @@
         />
       </div> -->
 
-      <tui-textfield iconStart="@tui.mail">
-        <label tuiLabel for="email">Email Address</label>
-        <input
-          id="email"
-          placeholder="Enter Email Address"
-          tuiInput
-          formControlName="email"
-        />
-      </tui-textfield>
+      <div>
+        <tui-textfield iconStart="@tui.mail">
+          <label tuiLabel for="email">Email Address</label>
+          <input
+            id="email"
+            placeholder="Enter Email Address"
+            tuiInput
+            formControlName="email"
+            libValidationMessage
+            [container]="emailAddressInputView.container"
+          />
+        </tui-textfield>
+        <ng-container
+          libViewContainer
+          #emailAddressInputView="libViewContainer"
+        ></ng-container>
+      </div>
 
       <!-- <div class="login__field">
         <div class="login__label-row">
@@ -51,16 +59,24 @@
         <a class="login__forgot j-self-end" routerLink="/forgot-password"
           >Forgot Password?</a
         >
-        <tui-textfield iconStart="@tui.key-round">
-          <label tuiLabel for="password">Password</label>
-          <input
-            placeholder="Enter Password"
-            tuiInput
-            type="password"
-            formControlName="password"
-          />
-          <tui-icon tuiPassword />
-        </tui-textfield>
+        <div>
+          <tui-textfield iconStart="@tui.key-round">
+            <label tuiLabel for="password">Password</label>
+            <input
+              placeholder="Enter Password"
+              tuiInput
+              type="password"
+              formControlName="password"
+              libValidationMessage
+              [container]="passwordInputView.container"
+            />
+            <tui-icon tuiPassword />
+          </tui-textfield>
+          <ng-container
+            libViewContainer
+            #passwordInputView="libViewContainer"
+          ></ng-container>
+        </div>
       </div>
 
       <button

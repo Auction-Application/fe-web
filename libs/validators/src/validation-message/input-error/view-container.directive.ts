@@ -1,10 +1,10 @@
 import { Directive, inject, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[libValidatorMessageContainer]',
+  selector: '[libViewContainer]',
   standalone: true,
-  exportAs: 'libValidatorMessageContainer'
+  exportAs: 'libViewContainer',
 })
-export class ValidatorMessageContainer {
+export class ViewContainer {
   container = inject(ViewContainerRef);
 }

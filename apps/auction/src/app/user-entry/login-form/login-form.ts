@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { DynamicValidatorMessage } from '@auction/validators';
+import { DynamicValidatorMessage, ViewContainer } from '@auction/validators';
 import { TuiButton, TuiIcon, TuiInput, TuiLabel } from '@taiga-ui/core';
 import { TuiPassword } from '@taiga-ui/kit';
 
@@ -18,6 +18,7 @@ import { TuiPassword } from '@taiga-ui/kit';
     TuiLabel,
     TuiIcon,
     TuiPassword,
+    ViewContainer,
   ],
 })
 export class LoginForm {

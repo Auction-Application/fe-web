@@ -68,15 +68,23 @@
         />
       </div> -->
 
-      <tui-textfield iconStart="@tui.user">
-        <label tuiLabel for="username">User Name</label>
-        <input
-          id="username"
-          placeholder="Enter Username"
-          tuiInput
-          formControlName="fullName"
-        />
-      </tui-textfield>
+      <div>
+        <tui-textfield iconStart="@tui.user">
+          <label tuiLabel for="username">User Name</label>
+          <input
+            id="username"
+            placeholder="Enter Username"
+            tuiInput
+            formControlName="fullName"
+            libValidationMessage
+            [container]="userNameInputView.container"
+          />
+        </tui-textfield>
+        <ng-container
+          libViewContainer
+          #userNameInputView="libViewContainer"
+        ></ng-container>
+      </div>
       <!-- <div class="signup__field">
         <label class="signup__label" for="email">Email Address</label>
         <input
@@ -90,15 +98,24 @@
         />
       </div> -->
 
-      <tui-textfield iconStart="@tui.mail">
-        <label tuiLabel for="email">Email Address</label>
-        <input
-          id="email"
-          placeholder="Enter Email Address"
-          tuiInput
-          formControlName="email"
-        />
-      </tui-textfield>
+      <div>
+        <tui-textfield iconStart="@tui.mail">
+          <label tuiLabel for="email">Email Address</label>
+          <input
+            id="email"
+            placeholder="Enter Email Address"
+            tuiInput
+            formControlName="email"
+            libValidationMessage
+            [container]="emailAdressInputView.container"
+          />
+        </tui-textfield>
+        <ng-container
+          libViewContainer
+          #emailAdressInputView="libViewContainer"
+        ></ng-container>
+      </div>
+
       <!-- <div class="signup__field">
         <label class="signup__label" for="password">Password</label>
         <input
@@ -112,16 +129,24 @@
         />
       </div> -->
 
-      <tui-textfield iconStart="@tui.key-round">
-        <label tuiLabel for="password">Password</label>
-        <input
-          placeholder="Enter Password"
-          tuiInput
-          type="password"
-          formControlName="password"
-        />
-        <tui-icon tuiPassword />
-      </tui-textfield>
+      <div>
+        <tui-textfield iconStart="@tui.key-round">
+          <label tuiLabel for="password">Password</label>
+          <input
+            placeholder="Enter Password"
+            tuiInput
+            type="password"
+            formControlName="password"
+            libValidationMessage
+            [container]="passwordInputView.container"
+          />
+          <tui-icon tuiPassword />
+        </tui-textfield>
+        <ng-container
+          libViewContainer
+          #passwordInputView="libViewContainer"
+        ></ng-container>
+      </div>
 
       <div class="signup__terms">
         <input class="signup__checkbox" id="terms" type="checkbox" />

@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { TuiButton, TuiIcon, TuiInput, TuiLabel } from '@taiga-ui/core';
-import { DynamicValidatorMessage } from '@auction/validators';
+import { DynamicValidatorMessage, ViewContainer } from '@auction/validators';
 import { TuiPassword } from '@taiga-ui/kit';
 
 @Component({
@@ -24,6 +24,7 @@ import { TuiPassword } from '@taiga-ui/kit';
     FormsModule,
     TuiLabel,
     TuiIcon,
+    ViewContainer,
   ],
 })
 export class SignupForm {
