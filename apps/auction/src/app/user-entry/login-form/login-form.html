@@ -5,56 +5,25 @@
       <h1 class="login__title">Account Access</h1>
     </header>
 
-    <!-- Email / password form -->
     <form class="login__form" (ngSubmit)="loginUser()" [formGroup]="loginForm">
-      <!-- <div class="login__field">
-        <label class="login__label" for="login-email">Email Address</label>
-        <input
-          class="login__input"
-          id="login-email"
-          type="email"
-          placeholder="name@example.com"
-          autocomplete="email"
-          libValidationMessage
-          formControlName="email"
-        />
-      </div> -->
-
       <div>
-        <tui-textfield iconStart="@tui.mail">
-          <label tuiLabel for="email">Email Address</label>
+        <tui-textfield iconStart="@tui.user">
+          <label tuiLabel for="username">User Name</label>
           <input
-            id="email"
-            placeholder="Enter Email Address"
+            id="username"
+            placeholder="Enter User Name"
             tuiInput
-            formControlName="email"
+            formControlName="username"
             libValidationMessage
-            [container]="emailAddressInputView.container"
+            [container]="usernameInputView.container"
           />
         </tui-textfield>
         <ng-container
           libViewContainer
-          #emailAddressInputView="libViewContainer"
+          #usernameInputView="libViewContainer"
         ></ng-container>
       </div>
 
-      <!-- <div class="login__field">
-        <div class="login__label-row">
-          <label class="login__label" for="login-password">Password</label>
-          <a class="login__forgot" routerLink="/forgot-password"
-            >Forgot Password?</a
-          >
-        </div>
-        <input
-          class="login__input"
-          id="login-password"
-          type="password"
-          placeholder="••••••••"
-          autocomplete="current-password"
-          formControlName="password"
-          libValidationMessage
-        />
-      </div> -->
       <div class="d-grid gap-1">
         <a class="login__forgot j-self-end" routerLink="/forgot-password"
           >Forgot Password?</a

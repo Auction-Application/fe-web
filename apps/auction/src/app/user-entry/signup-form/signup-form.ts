@@ -9,6 +9,7 @@ import { RouterLink } from '@angular/router';
 import { TuiButton, TuiIcon, TuiInput, TuiLabel } from '@taiga-ui/core';
 import { DynamicValidatorMessage, ViewContainer } from '@auction/validators';
 import { TuiPassword } from '@taiga-ui/kit';
+import { SignupState } from '../signup-page/signup.state';
 
 @Component({
   selector: 'app-signup-form',
@@ -28,18 +29,11 @@ import { TuiPassword } from '@taiga-ui/kit';
   ],
 })
 export class SignupForm {
-  protected readonly formBuilder = inject(FormBuilder);
+  readonly #signupState = inject(SignupState);
 
-  protected signupForm = this.formBuilder.group({
-    fullName: this.formBuilder.control(null, [Validators.required]),
-    email: this.formBuilder.control(null, [
-      Validators.email,
-      Validators.required,
-    ]),
-    password: this.formBuilder.control(null, [Validators.required]),
-  });
+  protected signupForm = this.#signupState.signupForm;
 
   protected signupUser() {
-    console.log('user sign up');
+    this.#signupState.signupUser();
   }
 }

@@ -49,25 +49,11 @@
       <span class="signup__divider-text">or use email</span>
     </div>
 
-    <!-- Email form -->
     <form
       class="signup__form"
       (ngSubmit)="signupUser()"
       [formGroup]="signupForm"
     >
-      <!-- <div class="signup__field">
-        <label class="signup__label" for="fullname">Full Name</label>
-        <input
-          class="signup__input"
-          id="fullname"
-          type="text"
-          placeholder="Alexandros Mercer"
-          autocomplete="name"
-          libValidationMessage
-          formControlName="fullName"
-        />
-      </div> -->
-
       <div>
         <tui-textfield iconStart="@tui.user">
           <label tuiLabel for="username">User Name</label>
@@ -75,28 +61,16 @@
             id="username"
             placeholder="Enter Username"
             tuiInput
-            formControlName="fullName"
+            formControlName="username"
             libValidationMessage
-            [container]="userNameInputView.container"
+            [container]="usernameInputView.container"
           />
         </tui-textfield>
         <ng-container
           libViewContainer
-          #userNameInputView="libViewContainer"
+          #usernameInputView="libViewContainer"
         ></ng-container>
       </div>
-      <!-- <div class="signup__field">
-        <label class="signup__label" for="email">Email Address</label>
-        <input
-          class="signup__input"
-          id="email"
-          type="email"
-          placeholder="collector@exchange.com"
-          autocomplete="email"
-          libValidationMessage
-          formControlName="email"
-        />
-      </div> -->
 
       <div>
         <tui-textfield iconStart="@tui.mail">
@@ -115,19 +89,6 @@
           #emailAdressInputView="libViewContainer"
         ></ng-container>
       </div>
-
-      <!-- <div class="signup__field">
-        <label class="signup__label" for="password">Password</label>
-        <input
-          class="signup__input"
-          id="password"
-          type="password"
-          placeholder="••••••••••••"
-          autocomplete="new-password"
-          libValidationMessage
-          formControlName="password"
-        />
-      </div> -->
 
       <div>
         <tui-textfield iconStart="@tui.key-round">

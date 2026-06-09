@@ -25,10 +25,7 @@ export class LoginForm {
   protected readonly formBuilder = inject(FormBuilder);
 
   protected readonly loginForm = this.formBuilder.group({
-    email: this.formBuilder.control(null, [
-      Validators.email,
-      Validators.required,
-    ]),
+    username: this.formBuilder.control(null, [Validators.required]),
     password: this.formBuilder.control(null, [Validators.required]),
   });
 
