@@ -1,12 +1,64 @@
-<tui-textfield>
-  <input
-    placeholder="••••••"
-    tuiInputPin
-    maxlength="6"
-    [formControl]="emailVerifyPin"
-    libValidationMessage
-    [container]="pinCodeInput.container"
-    controlName="pin code"
-  />
-</tui-textfield>
-<ng-container libViewContainer #pinCodeInput="libViewContainer"></ng-container>
+<div class="d-grid max-w-lg mx-auto w-full">
+  <header class="mb-8">
+    <h2
+      class="font-headline text-4xl font-extrabold tracking-tight text-on-surface mb-3"
+    >
+      Verify your email
+    </h2>
+    <p class="text-sm text-on-surface-variant leading-relaxed">
+      We've sent a 6-digit verification code to your email address. Please enter
+      it below to complete your registration.
+    </p>
+  </header>
+
+  <tui-textfield>
+    <input
+      placeholder="••••••"
+      tuiInputPin
+      maxlength="6"
+      [formControl]="emailVerifyPin"
+      libValidationMessage
+      [container]="pinCodeInput.container"
+      controlName="pin code"
+    />
+  </tui-textfield>
+  <ng-container
+    libViewContainer
+    #pinCodeInput="libViewContainer"
+  ></ng-container>
+
+  <button
+    tuiButton
+    type="button"
+    appearance="primary"
+    size="l"
+    class="w-full mt-8"
+  >
+    Verify &amp; Continue
+    <tui-icon icon="@tui.arrow-right" />
+  </button>
+
+  <p class="text-center text-sm text-on-surface-variant mt-6">
+    Didn't receive the code?&nbsp;
+    <a
+      class="font-semibold"
+      style="cursor: pointer"
+      (click)="resendCode()"
+      tabindex="0"
+      (keydown.enter)="resendCode()"
+      >Resend Code</a
+    >
+  </p>
+
+  <p class="text-center mt-4">
+    <a
+      class="text-sm uppercase tracking-wider font-semibold"
+      style="cursor: pointer"
+      tabindex="0"
+      (click)="changeToSignup()"
+      (keydown.enter)="changeToSignup()"
+    >
+      ← Back to Sign Up
+    </a>
+  </p>
+</div>

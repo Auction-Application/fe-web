@@ -104,35 +104,6 @@
   }
 }
 
-// ─── Submit ───────────────────────────────────────────────────────────────────
-.login__submit {
-  &[tuiButton] {
-    width: 100%;
-    background: $gradient-primary-cta !important;
-    color: $on-primary !important;
-    font-family: $font-headline;
-    font-weight: 700;
-    font-size: 0.9375rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    border-radius: $radius-md;
-    padding-block: 1rem;
-    border: none;
-    transition:
-      opacity 150ms ease,
-      transform 100ms ease;
-
-    &:hover {
-      opacity: 0.92;
-      transform: scale(1.005);
-    }
-
-    &:active {
-      transform: scale(0.998);
-    }
-  }
-}
-
 // ─── Divider ─────────────────────────────────────────────────────────────────
 .login__divider {
   position: relative;
@@ -202,17 +173,4 @@
   font-family: $font-body;
   font-size: 0.8125rem;
   color: $on-surface-variant;
-}
-
-.login__footer-link {
-  font-weight: 600;
-  color: $on-surface;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  text-decoration-color: rgba($outline-variant, 0.5);
-  transition: text-decoration-color 150ms ease;
-
-  &:hover {
-    text-decoration-color: $on-surface;
-  }
 }

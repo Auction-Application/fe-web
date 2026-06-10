@@ -2,6 +2,32 @@
 @use 'scss/grid';
 @use 'scss/spacing';
 @use 'scss/typography';
+@use 'scss/base';
+// ─── TaigaUI token overrides ─────────────────────────────────────────────────
+// Replace the default blue accent with the design-system gradient.
+// `--t-bg` is an internal alias TaigaUI sets to one of these three tokens
+// depending on interaction state, so overriding all three is sufficient.:
+root {
+  //   --tui-background-accent-1:         #{$gradient-primary-cta};
+  //   --tui-background-accent-1-hover:   #{$gradient-primary-cta};
+  //   --tui-background-accent-1-pressed: #{$gradient-primary-cta};
+  // }
+
+  // // Gradients cannot be colour-transitioned, so swap to opacity-based feedback.
+  // [tuiAppearance][data-appearance='primary'] {
+  //   transition: opacity 150ms ease, transform 100ms ease;
+
+  //   &:hover:not([data-state]),
+  //   &[data-state='hover'] {
+  //     opacity: 0.88;
+  //   }
+
+  //   &:active:not([data-state]),
+  //   &[data-state='active'] {
+  //     opacity: 0.8;
+  //     transform: scale(0.998);
+  //   }
+}
 
 // ─── Global Reset & Base ─────────────────────────────────────────────────────
 *,

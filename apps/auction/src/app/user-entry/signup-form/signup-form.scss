@@ -33,19 +33,6 @@
   color: $on-surface-variant;
 }
 
-.signup__signin-link {
-  font-weight: 600;
-  color: $on-surface;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-color: rgba($outline-variant, 0.6);
-  transition: text-decoration-color 150ms ease;
-
-  &:hover {
-    text-decoration-color: $on-surface;
-  }
-}
-
 // ─── Social buttons ───────────────────────────────────────────────────────────
 .signup__social {
   display: flex;
@@ -179,32 +166,4 @@
   color: $on-surface;
   text-decoration: underline;
   text-underline-offset: 2px;
-}
-
-// ─── CTA ─────────────────────────────────────────────────────────────────────
-.signup__submit {
-  &[tuiButton] {
-    width: 100%;
-    background: $gradient-primary-cta !important;
-    color: $on-primary !important;
-    font-family: $font-headline;
-    font-weight: 700;
-    font-size: 1rem;
-    border-radius: $radius-md;
-    padding-block: 1rem;
-    border: none;
-    margin-top: 0.25rem;
-    transition:
-      opacity 150ms ease,
-      transform 100ms ease;
-
-    &:hover {
-      opacity: 0.92;
-      transform: scale(1.005);
-    }
-
-    &:active {
-      transform: scale(0.998);
-    }
-  }
 }

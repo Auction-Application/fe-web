@@ -1,0 +1,18 @@
+@use 'variables' as *;
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.link {
+  font-weight: 600;
+  color: $on-surface;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba($outline-variant, 0.6);
+  transition: text-decoration-color 150ms ease;
+
+  &:hover {
+    text-decoration-color: $on-surface;
+  }
+}

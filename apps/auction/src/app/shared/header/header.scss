@@ -100,23 +100,4 @@
   }
 }
 
-// ─── CTA override (gradient) ─────────────────────────────────────────────────
-// Taiga UI's `appearance="primary"` is overridden here to use the
-// design-system gradient. All other button behaviour is preserved.
-.site-header__cta {
-  &[tuiButton] {
-    background: $gradient-primary-cta !important;
-    color: $on-primary !important;
-    font-family: $font-headline;
-    font-weight: 600;
-    font-size: 0.875rem;
-    border-radius: $radius-md;
-    padding-inline: 1.5rem;
-    border: none;
-    transition: opacity 150ms ease;
-
-    &:hover {
-      opacity: 0.9;
-    }
-  }
-}
+// Primary button gradient is applied globally via --tui-background-accent-1 in styles.scss.
