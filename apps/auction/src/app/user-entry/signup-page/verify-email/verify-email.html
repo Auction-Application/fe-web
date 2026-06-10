@@ -1,0 +1,12 @@
+<tui-textfield>
+  <input
+    placeholder="••••••"
+    tuiInputPin
+    maxlength="6"
+    [formControl]="emailVerifyPin"
+    libValidationMessage
+    [container]="pinCodeInput.container"
+    controlName="pin code"
+  />
+</tui-textfield>
+<ng-container libViewContainer #pinCodeInput="libViewContainer"></ng-container>

@@ -17,6 +17,7 @@ import {
   PristineChangeEvent,
 } from '@angular/forms';
 import {
+  defer,
   EMPTY,
   filter,
   fromEvent,
@@ -67,7 +68,11 @@ export class DynamicValidatorMessage implements OnInit, OnDestroy {
           filter((event) => event instanceof PristineChangeEvent),
         ),
         fromEvent(this.elementRef.nativeElement, 'blur'),
-        iif(() => !!this.form, this.form!.ngSubmit, EMPTY),
+        iif(
+          () => !!this.form,
+          defer(() => this.form!.ngSubmit),
+          EMPTY,
+        ),
       )
         .pipe(
           startWith(this.ngControl.control.status),
