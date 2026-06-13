@@ -1,15 +1,15 @@
-import { inject, Injectable } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import {
-  PostUserConfirmSignupPayload,
-  PostUserSignupPayload,
-} from '../auth.api.types';
-import { AuthApiService } from '../auth.api.service';
+import { inject, Injectable, signal } from '@angular/core';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { AuthApi } from '../auth.api';
+import { PostUserConfirmSignupPayload } from '../auth.api.types';
 
 @Injectable()
 export class SignupState {
   readonly #formBuilder = inject(FormBuilder);
-  readonly #authApi = inject(AuthApiService);
+  readonly #authApi = inject(AuthApi);
+
+  readonly showSignupPage = signal(true);
+
   //todo make strict form type
   readonly signupForm = this.#formBuilder.group({
     username: this.#formBuilder.control(null, [Validators.required]),
@@ -19,6 +19,8 @@ export class SignupState {
     ]),
     password: this.#formBuilder.control(null, [Validators.required]),
   });
+
+  abcd = new FormControl('');
 
   signupUser() {
     //todo add toaster message

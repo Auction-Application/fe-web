@@ -27,7 +27,7 @@ import {
   startWith,
   Subscription,
 } from 'rxjs';
-import { ErrorStateMatcher } from './input-error/error-state-matcher.service';
+import { OnTouchedErrorStateMatcher } from './input-error/error-state-matcher.service';
 import { InputErrorComponent } from './input-error/input-error.component';
 
 @Directive({
@@ -46,7 +46,7 @@ export class DynamicValidatorMessage implements OnInit, OnDestroy {
       | null;
   }
   @Input()
-  errorStateMatcher = inject(ErrorStateMatcher);
+  errorStateMatcher = inject(OnTouchedErrorStateMatcher);
 
   @Input()
   container = inject(ViewContainerRef);

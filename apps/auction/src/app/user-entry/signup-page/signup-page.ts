@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { UserEntry } from '../user-entry';
+import { Component, inject } from '@angular/core';
 import { SignupForm } from '../signup-form/signup-form';
+import { UserEntry } from '../user-entry';
 import { SignupState } from './signup.state';
 import { VerifyEmail } from './verify-email/verify-email';
 
@@ -9,10 +9,16 @@ import { VerifyEmail } from './verify-email/verify-email';
   providers: [SignupState],
   template: `
     <app-user-entry>
-      <!-- <app-signup-form /> -->
-      <app-verify-email></app-verify-email>
+      @if (showSignupPage()) {
+        <app-signup-form />
+      } @else {
+        <app-verify-email />
+      }
     </app-user-entry>
   `,
   imports: [UserEntry, SignupForm, VerifyEmail],
 })
-export class SignupPage {}
+export class SignupPage {
+  readonly #signupState = inject(SignupState);
+  readonly showSignupPage = this.#signupState.showSignupPage;
+}

@@ -3,6 +3,7 @@
 @use 'scss/spacing';
 @use 'scss/typography';
 @use 'scss/base';
+@use 'scss/override';
 // ─── TaigaUI token overrides ─────────────────────────────────────────────────
 // Replace the default blue accent with the design-system gradient.
 // `--t-bg` is an internal alias TaigaUI sets to one of these three tokens

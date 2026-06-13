@@ -1,14 +1,10 @@
 import { Component, inject } from '@angular/core';
-import {
-  FormBuilder,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { TuiButton, TuiIcon, TuiInput, TuiLabel } from '@taiga-ui/core';
 import { DynamicValidatorMessage, ViewContainer } from '@auction/validators';
+import { TuiButton, TuiIcon, TuiInput, TuiLabel } from '@taiga-ui/core';
 import { TuiPassword } from '@taiga-ui/kit';
+import { ApiErrorToast, ErrorToast } from '../../api-error-toast';
 import { SignupState } from '../signup-page/signup.state';
 
 @Component({
@@ -26,6 +22,7 @@ import { SignupState } from '../signup-page/signup.state';
     TuiLabel,
     TuiIcon,
     ViewContainer,
+    ApiErrorToast,
   ],
 })
 export class SignupForm {
@@ -33,7 +30,17 @@ export class SignupForm {
 
   protected signupForm = this.#signupState.signupForm;
 
+  //demo
+  errorToast = inject(ErrorToast);
+
   protected signupUser() {
+    this.errorToast
+      .showApiError({
+        message:
+          'This is error. La hai la error aayo toaster bata. This is error. La hai la error aayo toaster bata.',
+        title: 'This is test1',
+      })
+      .subscribe();
     this.#signupState.signupUser();
   }
 }

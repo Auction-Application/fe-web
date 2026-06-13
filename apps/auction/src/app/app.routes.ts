@@ -2,7 +2,7 @@ import { Route } from '@angular/router';
 
 export const appRoutes: Route[] = [
   {
-    path: '',
+    path: 'signup',
     loadComponent: () =>
       import('./user-entry/signup-page/signup-page').then((m) => m.SignupPage),
   },
