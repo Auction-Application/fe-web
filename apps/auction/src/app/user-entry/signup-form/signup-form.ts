@@ -3,7 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { DynamicValidatorMessage, ViewContainer } from '@auction/validators';
 import { TuiButton, TuiIcon, TuiInput, TuiLabel } from '@taiga-ui/core';
-import { TuiPassword } from '@taiga-ui/kit';
+import { TuiButtonLoading, TuiPassword } from '@taiga-ui/kit';
 import { ApiErrorToast, ErrorToast } from '../../api-error-toast';
 import { SignupState } from '../signup-page/signup.state';
 
@@ -23,6 +23,7 @@ import { SignupState } from '../signup-page/signup.state';
     TuiIcon,
     ViewContainer,
     ApiErrorToast,
+    TuiButtonLoading,
   ],
 })
 export class SignupForm {

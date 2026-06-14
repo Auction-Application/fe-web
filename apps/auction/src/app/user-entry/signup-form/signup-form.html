@@ -120,9 +120,17 @@
         </label>
       </div>
 
-      <button tuiButton type="submit" appearance="primary" size="l">
+      <button
+        tuiButton
+        type="submit"
+        appearance="primary"
+        size="l"
+        [loading]="true"
+      >
         Create Account
       </button>
     </form>
   </div>
 </section>
+
+<button tuiButton [loading]="'loading guys...'">Hello</button>
