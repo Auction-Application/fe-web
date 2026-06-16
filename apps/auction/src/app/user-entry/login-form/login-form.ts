@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { DynamicValidatorMessage, ViewContainer } from '@auction/validators';
 import { TuiButton, TuiIcon, TuiInput, TuiLabel } from '@taiga-ui/core';
 import { TuiPassword } from '@taiga-ui/kit';
+import { MarkAllAsTouchedDirective } from '../../directives';
 
 @Component({
   selector: 'app-login-form',
@@ -19,6 +20,7 @@ import { TuiPassword } from '@taiga-ui/kit';
     TuiIcon,
     TuiPassword,
     ViewContainer,
+    MarkAllAsTouchedDirective,
   ],
 })
 export class LoginForm {
