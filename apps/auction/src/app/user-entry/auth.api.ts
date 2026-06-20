@@ -16,16 +16,19 @@ export class AuthApi {
 
   signupUser(userSignupDetails: PostUserSignupPayload) {
     return this.#httpClient.post<PostUserSignupResponse>(
-      `signup`,
+      `v1/signup`,
       userSignupDetails,
     );
   }
 
   signinUser(userSigninDetails: PostUserSigninPayload) {
-    return this.#httpClient.post<AuthTokens>(`signup`, userSigninDetails);
+    return this.#httpClient.post<AuthTokens>(`v1/signin`, userSigninDetails);
   }
 
   confirmUserSignup(userConfirmSignupDetails: PostUserConfirmSignupPayload) {
-    return this.#httpClient.post<unknown>(`confirm`, userConfirmSignupDetails);
+    return this.#httpClient.post<unknown>(
+      `v1/signup/confirm`,
+      userConfirmSignupDetails,
+    );
   }
 }

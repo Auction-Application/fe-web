@@ -25,7 +25,7 @@
             "regexp": "(.*?)"
           },
           "endsPattern": {
-            "regexp": "Compiled |Failed to compile."
+            "regexp": "Compiled |Failed to compile.|bundle generation complete|Application bundle generation"
           }
         }
       }

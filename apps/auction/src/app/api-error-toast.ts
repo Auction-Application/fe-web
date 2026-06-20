@@ -56,11 +56,13 @@ export class ErrorToast {
   readonly toast = inject(TuiToastService);
 
   showApiError(data: ApiErrorData) {
-    return this.toast.open(new PolymorpheusComponent(ApiErrorToast), {
-      data,
-      appearance: 'api-error',
-      closable: true,
-      autoClose: 4000000,
-    });
+    this.toast
+      .open(new PolymorpheusComponent(ApiErrorToast), {
+        data,
+        appearance: 'api-error',
+        closable: true,
+        autoClose: 3000,
+      })
+      .subscribe();
   }
 }

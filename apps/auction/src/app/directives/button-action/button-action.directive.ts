@@ -13,7 +13,7 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { merge, Subject, takeUntil, tap } from 'rxjs';
 import { createTokenFromFactory } from '../../create-token';
-import { ButtonLoader } from '../button-loader.directive';
+import { ButtonLoader, ButtonLoadingService } from '../button-loader.directive';
 import { Action } from './action';
 
 @Directive({
@@ -73,12 +73,16 @@ export class ButtonActionDirective<T> implements OnChanges {
     }
   }
 
+  readonly #buttonLoader = inject(ButtonLoadingService, { self: true });
+
   #isProcessing() {
+    this.#buttonLoader.setButtonLoadingIndicator({ processing: true });
     this.#currentState.set(this.actionState().processingState);
     this.action()._setProcessing();
   }
 
   #reset() {
+    this.#buttonLoader.setButtonLoadingIndicator({ processing: false });
     this.#currentState.set('');
     this.action()._setIdle();
   }

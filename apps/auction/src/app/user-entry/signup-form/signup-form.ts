@@ -10,9 +10,15 @@ import {
   TuiLoader,
 } from '@taiga-ui/core';
 import { TuiButtonLoading, TuiPassword } from '@taiga-ui/kit';
+import { tap } from 'rxjs';
 import { ApiErrorToast, ErrorToast } from '../../api-error-toast';
-import { MarkAllAsTouchedDirective } from '../../directives';
+import {
+  Action,
+  ButtonActionDirective,
+  MarkAllAsTouchedDirective,
+} from '../../directives';
 import { ButtonLoader } from '../../directives/button-loader.directive';
+import { PostUserSignupResponse } from '../auth.api.types';
 import { SignupState } from '../signup-page/signup.state';
 
 @Component({
@@ -35,6 +41,7 @@ import { SignupState } from '../signup-page/signup.state';
     TuiLoader,
     ButtonLoader,
     MarkAllAsTouchedDirective,
+    ButtonActionDirective,
   ],
 })
 export class SignupForm {
@@ -56,4 +63,28 @@ export class SignupForm {
     // this.#signupState.signupUser();
     this.processFlag = !this.processFlag;
   }
+
+  protected readonly createAccount = new Action<
+    unknown,
+    PostUserSignupResponse
+  >(
+    () => {
+      return this.#signupState.signupUser().pipe(
+        tap(() => {
+          this.#signupState.showEmailOtpForm();
+        }),
+      );
+    },
+    () => {
+      if (!this.#signupState.signupForm.valid) {
+        return {
+          mode: 'ignore',
+        };
+      } else {
+        return {
+          mode: 'keep',
+        };
+      }
+    },
+  );
 }

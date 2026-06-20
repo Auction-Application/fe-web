@@ -2,10 +2,10 @@ import { computed, signal } from '@angular/core';
 import {
   catchError,
   defer,
-  EMPTY,
   exhaustMap,
   filter,
   Observable,
+  of,
   ReplaySubject,
   Subject,
   switchMap,
@@ -28,7 +28,7 @@ export class Action<T, K = unknown> {
       }),
       catchError((err) => {
         console.error(err);
-        return EMPTY;
+        return of(null);
       }),
     ),
   );

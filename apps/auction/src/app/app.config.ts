@@ -6,8 +6,8 @@ import {
 import { provideRouter } from '@angular/router';
 import { provideTaiga } from '@taiga-ui/core';
 import { appRoutes } from './app.routes';
-import { errorInterceptor } from './error-interceptor';
-import { apiUrlInterceptor } from './url.iterceptor';
+import { errorInterceptor } from './error.interceptor';
+import { apiUrlInterceptor } from './url.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [

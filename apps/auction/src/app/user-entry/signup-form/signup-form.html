@@ -120,19 +120,15 @@
         </label>
       </div>
 
-      <button tuiButton type="submit" appearance="primary" size="l">
+      <button
+        tuiButton
+        type="submit"
+        appearance="primary"
+        size="l"
+        [action]="createAccount"
+      >
         Create Account
       </button>
     </form>
   </div>
 </section>
-
-<button tuiButton [loading]="'loading guys...'">Hello</button>
-
-<tui-loader
-  [loading]="true"
-  textContent="hello"
-  [inheritColor]="true"
-></tui-loader>
-
-<button tuiButton [processing]="processFlag" class="c-white">Hello</button>
