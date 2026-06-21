@@ -51,7 +51,7 @@ export class SignupFormComponent {
 
   //demo
   errorToast = inject(ErrorToast);
-  processFlag = false;
+  // processFlag = false;
   protected signupUser() {
     // this.errorToast
     //   .showApiError({
@@ -61,7 +61,7 @@ export class SignupFormComponent {
     //   })
     //   .subscribe();
     // this.#signupState.signupUser();
-    this.processFlag = !this.processFlag;
+    // this.processFlag = !this.processFlag;
   }
 
   protected readonly createAccount = new Action<

@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { AuthTokens } from '../auth/auth.types';
 import {
   PostUserConfirmSignupPayload,
+  PostUserConfirmSignupResponse,
   PostUserSigninPayload,
   PostUserSignupPayload,
   PostUserSignupResponse,
@@ -26,7 +27,7 @@ export class AuthApi {
   }
 
   confirmUserSignup(userConfirmSignupDetails: PostUserConfirmSignupPayload) {
-    return this.#httpClient.post<unknown>(
+    return this.#httpClient.post<PostUserConfirmSignupResponse>(
       `v1/signup/confirm`,
       userConfirmSignupDetails,
     );

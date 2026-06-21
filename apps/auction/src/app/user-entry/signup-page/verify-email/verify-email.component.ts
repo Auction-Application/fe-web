@@ -1,9 +1,17 @@
-import { Component } from '@angular/core';
-import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DynamicValidatorMessage, ViewContainer } from '@auction/validators';
 import { TuiButton, TuiIcon } from '@taiga-ui/core';
 import { TuiInputPin } from '@taiga-ui/kit';
+import { tap } from 'rxjs';
+import {
+  Action,
+  ButtonActionDirective,
+  MarkAllAsTouchedDirective,
+} from '../../../directives';
+import { PostUserConfirmSignupResponse } from '../../auth.api.types';
+import { SignupState } from '../signup.state';
 
 @Component({
   selector: 'app-verify-email',
@@ -14,22 +22,57 @@ import { TuiInputPin } from '@taiga-ui/kit';
     ViewContainer,
     TuiButton,
     TuiIcon,
-    RouterLink,
+    MarkAllAsTouchedDirective,
+    ButtonActionDirective,
   ],
   templateUrl: './verify-email.html',
   styles: ``,
 })
 export class VerifyEmailComponent {
-  protected readonly emailVerifyPin = new FormControl(null, [
-    Validators.minLength(6),
-    Validators.required,
-  ]);
+  readonly #signupState = inject(SignupState);
+  readonly #router = inject(Router);
+  readonly #activatedRoute = inject(ActivatedRoute);
+
+  comfirm() {
+    console.log('confirm');
+  }
+
+  protected readonly emailVerifyPinCodeForm =
+    this.#signupState.emailVerifyPinCodeForm;
+
+  protected readonly verifyPinCode = new Action<
+    unknown,
+    PostUserConfirmSignupResponse
+  >(
+    () => {
+      return this.#signupState.confirmUserSignup().pipe(
+        tap(() => {
+          this.#router.navigate(['login'], {
+            relativeTo: this.#activatedRoute.parent,
+          });
+        }),
+      );
+    },
+    () => {
+      if (!this.#signupState.emailVerifyPinCodeForm.valid) {
+        return {
+          mode: 'ignore',
+        };
+      } else {
+        return {
+          mode: 'keep',
+        };
+      }
+    },
+  );
 
   protected changeToSignup() {
-    console.log('Changed to Signup');
+    this.#signupState.emailVerifyPinCodeForm.reset();
+    this.#signupState.hideEmailOtpForm();
   }
 
   protected resendCode() {
+    //todo
     console.log('Resend Code');
   }
 }

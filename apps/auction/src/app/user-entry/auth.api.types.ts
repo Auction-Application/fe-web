@@ -15,6 +15,10 @@ export type PostUserConfirmSignupPayload = {
   code: number;
 };
 
+export type PostUserConfirmSignupResponse = {
+  message: string;
+};
+
 export type PostUserSigninPayload = {
   username: string;
   password: string;

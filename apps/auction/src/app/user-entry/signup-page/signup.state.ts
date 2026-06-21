@@ -1,7 +1,6 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthApi } from '../auth.api';
-import { PostUserConfirmSignupPayload } from '../auth.api.types';
 
 @Injectable()
 export class SignupState {
@@ -13,6 +12,9 @@ export class SignupState {
 
   showEmailOtpForm() {
     this.#showSignupPage.set(false);
+  }
+  hideEmailOtpForm() {
+    this.#showSignupPage.set(true);
   }
 
   //todo make strict form type
@@ -30,7 +32,19 @@ export class SignupState {
     return this.#authApi.signupUser(this.signupForm.value);
   }
 
-  confirmUserSignup(userConfirmSignupDetails: PostUserConfirmSignupPayload) {
-    return this.#authApi.confirmUserSignup(userConfirmSignupDetails);
+  readonly emailVerifyPinCodeForm = this.#formBuilder.group({
+    code: this.#formBuilder.control(null, [
+      Validators.minLength(6),
+      Validators.required,
+    ]),
+  });
+
+  confirmUserSignup() {
+    const payload = {
+      ...this.emailVerifyPinCodeForm.getRawValue(),
+      username: this.signupForm.getRawValue().username,
+    };
+    //@ts-ignore
+    return this.#authApi.confirmUserSignup(payload);
   }
 }

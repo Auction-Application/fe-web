@@ -1,4 +1,8 @@
-<div class="d-grid max-w-lg mx-auto w-full">
+<form
+  class="d-grid max-w-lg mx-auto w-full"
+  [formGroup]="emailVerifyPinCodeForm"
+  (ngSubmit)="comfirm()"
+>
   <header class="mb-8">
     <h2
       class="font-headline text-4xl font-extrabold tracking-tight text-on-surface mb-3"
@@ -16,7 +20,7 @@
       placeholder="••••••"
       tuiInputPin
       maxlength="6"
-      [formControl]="emailVerifyPin"
+      formControlName="code"
       libValidationMessage
       [container]="pinCodeInput.container"
       controlName="pin code"
@@ -29,10 +33,11 @@
 
   <button
     tuiButton
-    type="button"
+    type="submit"
     appearance="primary"
     size="l"
     class="w-full mt-8"
+    [action]="verifyPinCode"
   >
     Verify &amp; Continue
     <tui-icon icon="@tui.arrow-right" />
@@ -60,4 +65,4 @@
       ← Back to Sign Up
     </a>
   </p>
-</div>
+</form>

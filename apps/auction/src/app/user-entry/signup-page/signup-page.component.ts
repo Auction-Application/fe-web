@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { SignupFormComponent } from '../signup-form/signup-form.componentts';
+
+import { SignupFormComponent } from '../signup-form/signup-form.component';
 import { UserEntryComponent } from '../user-entry.component';
 import { SignupState } from './signup.state';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
