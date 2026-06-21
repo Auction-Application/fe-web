@@ -13,12 +13,12 @@ interface NavItem {
   styleUrl: './header.scss',
   imports: [RouterLink, RouterLinkActive, TuiButton, TuiIcon],
 })
-export class Header {
+export class HeaderComponent {
   protected readonly navItems: NavItem[] = [
-    { label: 'Live Auctions',       path: '/live-auctions' },
-    { label: 'Upcoming',            path: '/upcoming' },
+    { label: 'Live Auctions', path: '/live-auctions' },
+    { label: 'Upcoming', path: '/upcoming' },
     { label: 'Private Collections', path: '/private-collections' },
-    { label: 'Artists',             path: '/artists' },
-    { label: 'Journal',             path: '/journal' },
+    { label: 'Artists', path: '/artists' },
+    { label: 'Journal', path: '/journal' },
   ];
 }

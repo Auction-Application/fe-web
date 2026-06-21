@@ -23,7 +23,7 @@ import { MarkAllAsTouchedDirective } from '../../directives';
     MarkAllAsTouchedDirective,
   ],
 })
-export class LoginForm {
+export class LoginFormComponent {
   protected readonly formBuilder = inject(FormBuilder);
 
   protected readonly loginForm = this.formBuilder.group({

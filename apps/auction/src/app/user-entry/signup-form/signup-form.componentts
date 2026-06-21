@@ -44,7 +44,7 @@ import { SignupState } from '../signup-page/signup.state';
     ButtonActionDirective,
   ],
 })
-export class SignupForm {
+export class SignupFormComponent {
   readonly #signupState = inject(SignupState);
 
   protected signupForm = this.#signupState.signupForm;

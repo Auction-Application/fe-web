@@ -26,13 +26,11 @@ export class SignupState {
   });
 
   signupUser() {
-    //todo add toaster message
     //@ts-ignore
     return this.#authApi.signupUser(this.signupForm.value);
   }
 
   confirmUserSignup(userConfirmSignupDetails: PostUserConfirmSignupPayload) {
-    //todo add toaster message
     return this.#authApi.confirmUserSignup(userConfirmSignupDetails);
   }
 }

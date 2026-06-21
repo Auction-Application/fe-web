@@ -13,17 +13,17 @@ interface FooterLink {
   styleUrl: './footer.scss',
   imports: [RouterLink, NewsletterInput],
 })
-export class Footer {
+export class FooterComponent {
   protected readonly platformLinks: FooterLink[] = [
-    { label: 'Consign',    path: '/consign' },
+    { label: 'Consign', path: '/consign' },
     { label: 'Valuations', path: '/valuations' },
-    { label: 'FAQ',        path: '/faq' },
+    { label: 'FAQ', path: '/faq' },
   ];
 
   protected readonly legalLinks: FooterLink[] = [
-    { label: 'Privacy Policy',   path: '/privacy' },
+    { label: 'Privacy Policy', path: '/privacy' },
     { label: 'Terms of Service', path: '/terms' },
-    { label: 'Contact',          path: '/contact' },
+    { label: 'Contact', path: '/contact' },
   ];
 
   protected onNewsletterSubscribe(email: string): void {

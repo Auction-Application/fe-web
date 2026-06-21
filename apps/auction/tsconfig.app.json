@@ -4,6 +4,9 @@
     "outDir": "../../dist/out-tsc",
     "types": []
   },
-  "include": ["src/**/*.ts"],
+  "include": [
+    "src/**/*.ts",
+    "src/app/user-entry/signup-form/signup-form.componentts"
+  ],
   "exclude": ["src/**/*.spec.ts", "src/**/*.test.ts"]
 }

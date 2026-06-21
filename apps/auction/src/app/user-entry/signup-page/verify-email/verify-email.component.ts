@@ -19,7 +19,7 @@ import { TuiInputPin } from '@taiga-ui/kit';
   templateUrl: './verify-email.html',
   styles: ``,
 })
-export class VerifyEmail {
+export class VerifyEmailComponent {
   protected readonly emailVerifyPin = new FormControl(null, [
     Validators.minLength(6),
     Validators.required,
