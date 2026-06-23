@@ -5,7 +5,7 @@
       <h1 class="login__title">Account Access</h1>
     </header>
 
-    <form class="login__form" (ngSubmit)="loginUser()" [formGroup]="loginForm">
+    <form class="login__form" [formGroup]="loginForm">
       <div>
         <tui-textfield iconStart="@tui.user">
           <label tuiLabel for="username">User Name</label>
@@ -48,7 +48,13 @@
         </div>
       </div>
 
-      <button tuiButton type="submit" appearance="primary" size="l">
+      <button
+        tuiButton
+        type="submit"
+        appearance="primary"
+        size="l"
+        [action]="loginAction"
+      >
         Login
       </button>
     </form>

@@ -1,6 +1,7 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthApi } from '../auth.api';
+import { SignupConfirmForm, SignupForm } from '../auth.types';
 
 @Injectable()
 export class SignupState {
@@ -17,34 +18,30 @@ export class SignupState {
     this.#showSignupPage.set(true);
   }
 
-  //todo make strict form type
-  readonly signupForm = this.#formBuilder.group({
-    username: this.#formBuilder.control(null, [Validators.required]),
-    email: this.#formBuilder.control(null, [
+  readonly signupForm = this.#formBuilder.nonNullable.group<SignupForm>({
+    username: this.#formBuilder.nonNullable.control('', [Validators.required]),
+    email: this.#formBuilder.nonNullable.control('', [
       Validators.email,
       Validators.required,
     ]),
-    password: this.#formBuilder.control(null, [Validators.required]),
+    password: this.#formBuilder.nonNullable.control('', [Validators.required]),
   });
 
   signupUser() {
-    //@ts-ignore
-    return this.#authApi.signupUser(this.signupForm.value);
+    return this.#authApi.signupUser(this.signupForm.getRawValue());
   }
 
-  readonly emailVerifyPinCodeForm = this.#formBuilder.group({
-    code: this.#formBuilder.control(null, [
-      Validators.minLength(6),
-      Validators.required,
-    ]),
-  });
+  readonly emailVerifyPinCodeForm: FormGroup<SignupConfirmForm> =
+    this.#formBuilder.nonNullable.group({
+      code: ['', [Validators.minLength(6), Validators.required]],
+    });
 
   confirmUserSignup() {
     const payload = {
-      ...this.emailVerifyPinCodeForm.getRawValue(),
+      code: this.emailVerifyPinCodeForm.getRawValue().code,
       username: this.signupForm.getRawValue().username,
     };
-    //@ts-ignore
+
     return this.#authApi.confirmUserSignup(payload);
   }
 }
