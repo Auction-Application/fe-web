@@ -5,6 +5,7 @@ import { DynamicValidatorMessage, ViewContainer } from '@auction/validators';
 import { TuiButton, TuiIcon } from '@taiga-ui/core';
 import { TuiInputPin } from '@taiga-ui/kit';
 import { tap } from 'rxjs';
+import { AUTH_ROUTES } from '../../../auth.routes';
 import {
   Action,
   ButtonActionDirective,
@@ -47,7 +48,7 @@ export class VerifyEmailComponent {
     () => {
       return this.#signupState.confirmUserSignup().pipe(
         tap(() => {
-          this.#router.navigate(['login'], {
+          this.#router.navigate([AUTH_ROUTES.LOGIN.PATH], {
             relativeTo: this.#activatedRoute.parent,
           });
         }),

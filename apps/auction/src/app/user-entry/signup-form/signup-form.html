@@ -49,11 +49,7 @@
       <span class="signup__divider-text">or use email</span>
     </div>
 
-    <form
-      class="signup__form"
-      (ngSubmit)="signupUser()"
-      [formGroup]="signupForm"
-    >
+    <form class="signup__form" [formGroup]="signupForm">
       <div>
         <tui-textfield iconStart="@tui.user">
           <label tuiLabel for="username">User Name</label>

@@ -5,7 +5,6 @@ import { DynamicValidatorMessage, ViewContainer } from '@auction/validators';
 import { TuiButton, TuiIcon, TuiInput, TuiLabel } from '@taiga-ui/core';
 import { TuiPassword } from '@taiga-ui/kit';
 import { tap } from 'rxjs';
-import { ErrorToast } from '../../api-error-toast';
 import {
   Action,
   ButtonActionDirective,
@@ -37,21 +36,6 @@ export class SignupFormComponent {
   readonly #signupState = inject(SignupState);
 
   protected signupForm = this.#signupState.signupForm;
-
-  //demo
-  errorToast = inject(ErrorToast);
-  // processFlag = false;
-  protected signupUser() {
-    // this.errorToast
-    //   .showApiError({
-    //     message:
-    //       'This is error. La hai la error aayo toaster bata. This is error. La hai la error aayo toaster bata.',
-    //     title: 'This is test1',
-    //   })
-    //   .subscribe();
-    // this.#signupState.signupUser();
-    // this.processFlag = !this.processFlag;
-  }
 
   protected readonly createAccount = new Action<
     unknown,
