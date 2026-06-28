@@ -5,7 +5,7 @@ import { DynamicValidatorMessage, ViewContainer } from '@auction/validators';
 import { TuiButton, TuiIcon } from '@taiga-ui/core';
 import { TuiInputPin } from '@taiga-ui/kit';
 import { tap } from 'rxjs';
-import { AUTH_ROUTES } from '../../../auth.routes';
+import { AUTH_ROUTES } from '../../../auth.routes.config';
 import {
   Action,
   ButtonActionDirective,
