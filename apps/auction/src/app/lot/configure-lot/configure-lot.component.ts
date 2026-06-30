@@ -8,4 +8,6 @@ import { MediaUploadComponent } from './steps/media-upload/media-upload.componen
   templateUrl: './configure-lot.component.html',
   styles: ``,
 })
-export class ConfigureLotComponent {}
+export class ConfigureLotComponent {
+  protected readonly steps = ['Item Details', 'Images', 'Pricing', 'Shipping'];
+}
