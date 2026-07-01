@@ -1,60 +1,62 @@
-// ─── Design Tokens ──────────────────────────────────────────────────────────
+// ─── Design Tokens — "Auction Pro Curated" ─────────────────────────────────
 
-// Fonts
+// Fonts (Manrope is the sole typeface across the system)
 $font-headline: 'Manrope', sans-serif;
-$font-body:     'Inter', sans-serif;
-$font-label:    'Inter', sans-serif;
+$font-body:     'Manrope', sans-serif;
+$font-label:    'Manrope', sans-serif;
 
 // Surface hierarchy (gallery wall → podium → catalog card)
-$surface:                   #f7f9fb;
-$surface-bright:            #f7f9fb;
-$surface-dim:               #d8dadc;
+$surface:                   #f9f9ff;
+$surface-bright:            #f9f9ff;
+$surface-dim:               #d3daea;
 $surface-container-lowest:  #ffffff;
-$surface-container-low:     #f2f4f6;
-$surface-container:         #eceef0;
-$surface-container-high:    #e6e8ea;
-$surface-container-highest: #e0e3e5;
-$surface-variant:           #e0e3e5;
+$surface-container-low:     #f0f3ff;
+$surface-container:         #e7eefe;
+$surface-container-high:    #e2e8f8;
+$surface-container-highest: #dce3f2;
+$surface-variant:           #dce3f2;
 
 // On-surface
-$on-surface:         #191c1e;
-$on-surface-variant: #45464d;
-$on-background:      #191c1e;
+$on-surface:         #151c27;
+$on-surface-variant: #444652;
+$on-background:      #151c27;
 
-// Primary (jet black → deep navy gradient)
-$primary:           #000000;
-$primary-container: #131b2e;
-$primary-fixed:     #dae2fd;
-$primary-fixed-dim: #bec6e0;
+// Primary (Heritage Blue — trust, primary actions, progress)
+$primary:           #1f3c98;
+$primary-container: #3b55b1;
+$primary-fixed:     #dce1ff;
+$primary-fixed-dim: #b7c4ff;
 $on-primary:        #ffffff;
-$on-primary-container:        #7c839b;
-$on-primary-fixed:            #131b2e;
-$on-primary-fixed-variant:    #3f465c;
-$inverse-primary:             #bec6e0;
+$on-primary-container:        #cad2ff;
+$on-primary-fixed:            #001551;
+$on-primary-fixed-variant:    #223f9b;
+$inverse-primary:             #b7c4ff;
+$surface-tint:                #3e58b4;
 
 // Secondary
-$secondary:           #505f76;
-$secondary-container: #d0e1fb;
-$secondary-fixed:     #d3e4fe;
-$secondary-fixed-dim: #b7c8e1;
+$secondary:           #5d5e61;
+$secondary-container: #e0dfe3;
+$secondary-fixed:     #e2e2e5;
+$secondary-fixed-dim: #c6c6c9;
 $on-secondary:        #ffffff;
-$on-secondary-container:       #54647a;
-$on-secondary-fixed:           #0b1c30;
-$on-secondary-fixed-variant:   #38485d;
+$on-secondary-container:       #616265;
+$on-secondary-fixed:           #1a1c1e;
+$on-secondary-fixed-variant:   #45474a;
 
-// Tertiary (emerald — "reward" color, use sparingly)
-$tertiary:           #000000;
-$tertiary-container: #002113;
-$tertiary-fixed:     #6ffbbe;
-$tertiary-fixed-dim: #4edea3;
+// Tertiary
+$tertiary:           #424546;
+$tertiary-container: #5a5c5e;
+$tertiary-fixed:     #e2e2e4;
+$tertiary-fixed-dim: #c5c6c9;
 $on-tertiary:        #ffffff;
-$on-tertiary-container:      #009668;
-$on-tertiary-fixed:          #002113;
-$on-tertiary-fixed-variant:  #005236;
+$on-tertiary-container:      #d4d4d7;
+$on-tertiary-fixed:          #191c1e;
+$on-tertiary-fixed-variant:  #454749;
 
 // Outline
-$outline:         #76777d;
-$outline-variant: #c6c6cd;
+$outline:         #757683;
+$outline-variant: #c5c5d4;
+$outline-muted:   #c5c5d4;
 
 // Error
 $error:           #ba1a1a;
@@ -63,24 +65,77 @@ $error-container: #ffdad6;
 $on-error-container: #93000a;
 
 // Inverse
-$inverse-surface:    #2d3133;
-$inverse-on-surface: #eff1f3;
+$inverse-surface:    #2a313c;
+$inverse-on-surface: #ebf1ff;
 
 // Background
-$background: #f7f9fb;
+$background: #f9f9ff;
+
+// ─── Brand Accents ──────────────────────────────────────────────────────────
+$heritage-blue:   #5d76d4;
+$success-emerald: #059669;
+$surface-ice:     #f9f9ff;
+
+// ─── Typography Scale ───────────────────────────────────────────────────────
+$text-display-size:          48px;
+$text-display-weight:        700;
+$text-display-line-height:   56px;
+$text-display-tracking:      -0.02em;
+
+$text-headline-lg-size:        32px;
+$text-headline-lg-weight:      700;
+$text-headline-lg-line-height: 40px;
+$text-headline-lg-tracking:    -0.01em;
+
+$text-headline-lg-mobile-size:        24px;
+$text-headline-lg-mobile-weight:      700;
+$text-headline-lg-mobile-line-height: 32px;
+
+$text-headline-md-size:        24px;
+$text-headline-md-weight:      600;
+$text-headline-md-line-height: 32px;
+
+$text-body-lg-size:        18px;
+$text-body-lg-weight:      400;
+$text-body-lg-line-height: 28px;
+
+$text-body-md-size:        16px;
+$text-body-md-weight:      400;
+$text-body-md-line-height: 24px;
+
+$text-label-md-size:          14px;
+$text-label-md-weight:        600;
+$text-label-md-line-height:   20px;
+$text-label-md-tracking:      0.01em;
+
+$text-label-sm-size:        12px;
+$text-label-sm-weight:      500;
+$text-label-sm-line-height: 16px;
 
 // ─── Gradients ──────────────────────────────────────────────────────────────
 $gradient-primary-cta: linear-gradient(135deg, #{$primary} 0%, #{$primary-container} 100%);
 
-// ─── Border Radius ──────────────────────────────────────────────────────────
-$radius-sm:   0.125rem;
-$radius-md:   0.25rem;  // rounded-lg
-$radius-lg:   0.5rem;   // rounded-xl
-$radius-full: 0.75rem;
+// ─── Border Radius (Rounded and Intentional) ───────────────────────────────
+$radius-sm:   0.25rem;  // sm
+$radius-md:   0.5rem;   // DEFAULT — standard elements: buttons, inputs, cards
+$radius-lg:   0.75rem;  // md — large components
+$radius-xl:   1rem;     // lg
+$radius-2xl:  1.5rem;   // xl
+$radius-full: 9999px;   // full — pills, chips, status indicators
 
 // ─── Z-index ────────────────────────────────────────────────────────────────
 $z-sticky: 50;
 
-// ─── Glassmorphism ──────────────────────────────────────────────────────────
-$glass-bg:     rgba(255, 255, 255, 0.85);
-$glass-blur:   blur(24px);
+// ─── Glassmorphism (Level 2 — Navigation) ──────────────────────────────────
+$glass-bg:   rgba(249, 249, 255, 0.7);
+$glass-blur: blur(20px);
+
+// ─── Spacing (8px base unit) ────────────────────────────────────────────────
+$space-unit:           8px;
+$space-stack-sm:       8px;
+$space-stack-md:       16px;
+$space-stack-lg:       32px;
+$space-gutter:         24px;
+$space-margin-mobile:  16px;
+$space-margin-desktop: 40px;
+$container-max:        1280px;

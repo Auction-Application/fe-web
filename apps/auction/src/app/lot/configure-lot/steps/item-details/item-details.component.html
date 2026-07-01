@@ -1,1 +1,144 @@
-<p>item-details works!</p>
+<div class="d-grid grid-cols-form-sidebar gap-8 align-items-start background">
+  <!-- ── Left: Form Card ─────────────────────────────────────────────────────── -->
+  <article class="card p-8">
+    <div class="d-grid gap-1 mb-7">
+      <h2 class="text-xl font-semibold text-on-surface">Create New Lot</h2>
+      <p class="text-sm text-on-surface-variant leading-normal">
+        Provide the essential details for your item to be listed in upcoming
+        high-stakes auctions.
+      </p>
+    </div>
+
+    <form class="d-grid gap-5" [formGroup]="form">
+      <!-- Lot Title -->
+      <div class="d-grid gap-1">
+        <div class="d-grid grid-cols-label-counter px-1">
+          <span class="text-sm font-medium text-on-surface-variant"
+            >Lot Title</span
+          >
+          <!-- <span class="text-xs text-on-surface-variant"
+            >{{ descriptionLength }}/500</span
+          > -->
+        </div>
+        <tui-textfield>
+          <!-- <label tuiLabel for="lot-title"
+            >e.g. Rare 19th Century Impressionist Landscape</label
+          > -->
+          <input
+            id="lot-title"
+            tuiInput
+            placeholder="e.g. Rare 19th Century Impressionist Landscape"
+            formControlName="title"
+            libValidationMessage
+            [container]="titleView.container"
+          />
+        </tui-textfield>
+        <ng-container libViewContainer #titleView="libViewContainer" />
+      </div>
+
+      <!-- Category -->
+      <div class="d-grid gap-1">
+        <div class="d-grid grid-cols-label-counter px-1">
+          <span class="text-sm font-medium text-on-surface-variant"
+            >Category</span
+          >
+          <!-- <span class="text-xs text-on-surface-variant"
+            >{{ descriptionLength }}/500</span
+          > -->
+        </div>
+        <tui-textfield>
+          <!-- <label tuiLabel for="lot-category">Category</label> -->
+          <select
+            id="lot-category"
+            tuiSelect
+            formControlName="category"
+            [items]="categories"
+            placeholder="Select an auction category"
+            libValidationMessage
+            [container]="categoryView.container"
+          ></select>
+        </tui-textfield>
+        <ng-container libViewContainer #categoryView="libViewContainer" />
+      </div>
+
+      <!-- Description -->
+      <div class="d-grid gap-1">
+        <div class="d-grid grid-cols-label-counter px-1">
+          <span class="text-sm font-medium text-on-surface-variant"
+            >Description</span
+          >
+          <span class="text-xs text-on-surface-variant"
+            >{{ descriptionLength }}/500</span
+          >
+        </div>
+        <tui-textfield>
+          <textarea
+            tuiTextarea
+            aria-label="Description"
+            formControlName="description"
+            maxlength="500"
+            placeholder="Provide a thorough description of the item including historical significance, condition, and dimensions..."
+            libValidationMessage
+            [container]="descriptionView.container"
+          ></textarea>
+        </tui-textfield>
+        <ng-container libViewContainer #descriptionView="libViewContainer" />
+      </div>
+
+      <!-- Actions -->
+      <div class="d-grid grid-flow-col justify-content-end gap-3 mt-2">
+        <button
+          tuiButton
+          type="button"
+          appearance="flat"
+          size="l"
+          (click)="cancelled.emit()"
+        >
+          Cancel
+        </button>
+        <button
+          tuiButton
+          type="button"
+          appearance="primary"
+          size="l"
+          (click)="onNext()"
+        >
+          Next Step
+          <tui-icon icon="@tui.arrow-right" />
+        </button>
+      </div>
+    </form>
+  </article>
+
+  <!-- ── Right: Sidebar ─────────────────────────────────────────────────────── -->
+  <aside class="d-grid gap-4">
+    <!-- Pro Tip Card -->
+    <article tuiCardMedium>
+      <section [tuiCell]="'l'">
+        <span [tuiAvatar]="'@tui.lightbulb'" class="text-primary"></span>
+        <div tuiTitle>
+          Pro Tip
+          <div tuiSubtitle>
+            A detailed provenance increases buyer confidence by up to
+            <strong>40%</strong>. Mention specific ownership history, exhibition
+            records, and any official certifications included with the lot.
+          </div>
+        </div>
+      </section>
+    </article>
+
+    <!-- Featured Image -->
+    <figure class="card overflow-hidden m-0">
+      <img
+        class="d-block w-full aspect-4-3 object-cover"
+        src="assets/images/curated-standard.jpg"
+        alt="The Curated Standard auction preview"
+      />
+      <figcaption
+        class="text-sm font-medium text-on-surface-variant border-top px-3 py-2"
+      >
+        The Curated Standard
+      </figcaption>
+    </figure>
+  </aside>
+</div>

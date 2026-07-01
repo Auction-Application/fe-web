@@ -50,7 +50,8 @@ html {
 
 body {
   font-family: $font-body;
-  background-color: $surface-container-lowest; // #ffffff — override Taiga UI dark theme default
+  background-color: #faf8ff;
+  // background-color: $surface-container-lowest; // #ffffff — override Taiga UI dark theme default
   color: $on-surface;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;

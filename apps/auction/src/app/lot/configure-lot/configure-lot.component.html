@@ -14,12 +14,14 @@
   }
 </tui-stepper> -->
 
-<tui-stepper [activeItemIndex]="1">
+<tui-stepper [activeItemIndex]="1" class="background">
   @for (step of steps; track step) {
     <button tuiStep>
       {{ step }}
     </button>
   }
 </tui-stepper>
+
+<app-item-details></app-item-details>
 
 <!-- <app-media-upload></app-media-upload> -->

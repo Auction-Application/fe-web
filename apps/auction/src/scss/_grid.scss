@@ -1,5 +1,27 @@
 // ─── Grid & Layout Utilities ────────────────────────────────────────────────
 
+// ─── Named grid templates ────────────────────────────────────────────────────
+// Two-column page layout: fluid content area + fixed 360px sidebar
+.grid-cols-form-sidebar {
+  grid-template-columns: 1fr 360px;
+}
+
+// Label row: text on left, auto-sized counter/action on right
+.grid-cols-label-counter {
+  grid-template-columns: 1fr auto;
+}
+
+// Auto-flowing horizontal strip (e.g. action button rows)
+.grid-flow-col {
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+}
+
+// ─── Object / media ──────────────────────────────────────────────────────────
+.overflow-hidden { overflow: hidden; }
+.aspect-4-3      { aspect-ratio: 4 / 3; }
+.object-cover    { object-fit: cover; }
+
 // Flex helpers
 .d-flex {
   display: flex;
