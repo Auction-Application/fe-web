@@ -6,22 +6,20 @@ import {
   Validators,
 } from '@angular/forms';
 import { DynamicValidatorMessage, ViewContainer } from '@auction/validators';
-import {
-  TuiButton,
-  TuiCell,
-  TuiIcon,
-  TuiInput,
-  TuiTitle,
-} from '@taiga-ui/core';
+import { TuiButton, TuiIcon, TuiInput } from '@taiga-ui/core';
 import { TuiAvatar, TuiSelect, TuiTextarea } from '@taiga-ui/kit';
-import { TuiCard } from '@taiga-ui/layout';
+import { TuiCard, TuiCardLarge } from '@taiga-ui/layout';
+import {
+  MarkAllAsDirtyDirective,
+  MarkAllAsTouchedDirective,
+} from 'apps/auction/src/app/directives';
 
 @Component({
   selector: 'app-item-details',
   templateUrl: './item-details.component.html',
   styleUrl: './item-details.component.scss',
   host: {
-    class: 'background',
+    class: 'bg-inherit',
   },
   imports: [
     ReactiveFormsModule,
@@ -32,10 +30,11 @@ import { TuiCard } from '@taiga-ui/layout';
     TuiTextarea,
     TuiButton,
     TuiIcon,
-    TuiCell,
-    TuiTitle,
     TuiAvatar,
     TuiCard,
+    MarkAllAsTouchedDirective,
+    MarkAllAsDirtyDirective,
+    TuiCardLarge,
   ],
 })
 export class ItemDetailsComponent {
@@ -67,10 +66,10 @@ export class ItemDetailsComponent {
   }
 
   protected onNext(): void {
-    if (this.form.invalid) {
-      this.form.markAllAsTouched();
-      return;
-    }
-    this.proceeded.emit();
+    // if (this.form.invalid) {
+    //   this.form.markAllAsTouched();
+    //   return;
+    // }
+    // this.proceeded.emit();
   }
 }

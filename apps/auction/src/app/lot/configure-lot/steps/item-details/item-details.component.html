@@ -1,7 +1,7 @@
-<div class="d-grid grid-cols-form-sidebar gap-8 align-items-start background">
+<div class="d-grid grid-cols-form-sidebar gap-8 align-items-start bg-inherit">
   <!-- ── Left: Form Card ─────────────────────────────────────────────────────── -->
   <article class="card p-8">
-    <div class="d-grid gap-1 mb-7">
+    <div class="d-grid gap-1 mr-b-32">
       <h2 class="text-xl font-semibold text-on-surface">Create New Lot</h2>
       <p class="text-sm text-on-surface-variant leading-normal">
         Provide the essential details for your item to be listed in upcoming
@@ -86,7 +86,7 @@
       </div>
 
       <!-- Actions -->
-      <div class="d-grid grid-flow-col justify-content-end gap-3 mt-2">
+      <div class="d-grid grid-flow-col justify-content-between gap-3 mt-2">
         <button
           tuiButton
           type="button"
@@ -101,6 +101,8 @@
           type="button"
           appearance="primary"
           size="l"
+          markTouched
+          markDirty
           (click)="onNext()"
         >
           Next Step
@@ -113,22 +115,25 @@
   <!-- ── Right: Sidebar ─────────────────────────────────────────────────────── -->
   <aside class="d-grid gap-4">
     <!-- Pro Tip Card -->
-    <article tuiCardMedium>
-      <section [tuiCell]="'l'">
-        <span [tuiAvatar]="'@tui.lightbulb'" class="text-primary"></span>
-        <div tuiTitle>
-          Pro Tip
-          <div tuiSubtitle>
-            A detailed provenance increases buyer confidence by up to
-            <strong>40%</strong>. Mention specific ownership history, exhibition
-            records, and any official certifications included with the lot.
-          </div>
+    <article tuiCardLarge class="bg-secondary-container">
+      <div class="flex-1 d-grid gap-3 p-4">
+        <div class="d-grid grid-flow-col gap-3 align-items-center j-self-start">
+          <span
+            class="avatar-color-heritage-blue avatar-color-primary"
+            [tuiAvatar]="'@tui.lightbulb'"
+          ></span>
+          <strong class="text-sm font-semibold">Pro Tip</strong>
         </div>
-      </section>
+        <p class="text-sm leading-relaxed m-0 text-primary">
+          A detailed provenance increases buyer confidence by up to
+          <strong>40%</strong>. Mention specific ownership history, exhibition
+          records, and any official certifications included with the lot.
+        </p>
+      </div>
     </article>
 
     <!-- Featured Image -->
-    <figure class="card overflow-hidden m-0">
+    <!-- <figure class="card overflow-hidden m-0">
       <img
         class="d-block w-full aspect-4-3 object-cover"
         src="assets/images/curated-standard.jpg"
@@ -139,6 +144,6 @@
       >
         The Curated Standard
       </figcaption>
-    </figure>
+    </figure> -->
   </aside>
 </div>

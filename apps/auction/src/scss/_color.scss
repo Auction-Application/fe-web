@@ -3,3 +3,37 @@
 .c-white {
   color: $glass-bg;
 }
+
+.border-c-surface-dim {
+  border-color: $surface-dim;
+}
+.bg-c-surface {
+  background: $surface;
+}
+
+.bg-secondary-container {
+  --tui-background-elevation-2: #{$surface-primary-box};
+}
+
+// ─── Taiga UI text tokens ─────────────────────────────────────────────────────
+.text-tui-secondary {
+  color: var(--tui-text-secondary);
+}
+
+// ─── Avatar color overrides ───────────────────────────────────────────────────
+// [tuiAvatar] sets `color: var(--tui-text-secondary)` internally, so you
+// cannot override the icon color with a plain color class — you must override
+// the CSS variable instead.
+.avatar-color-primary {
+  --tui-text-secondary: #{$primary};
+}
+
+.avatar-color-heritage-blue {
+  --tui-text-secondary: #{$heritage-blue};
+}
+.avatar-color-on-surface {
+  --tui-text-secondary: #{$on-surface};
+}
+.avatar-color-accent {
+  --tui-text-secondary: var(--tui-text-action, #{$secondary});
+}

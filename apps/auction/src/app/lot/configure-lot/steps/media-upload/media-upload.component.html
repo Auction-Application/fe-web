@@ -1,26 +1,89 @@
-<!-- <button>upload</button> -->
+<div class="d-grid gap-8 bg-inherit">
+  <!-- ── Header ──────────────────────────────────────────────────────────────── -->
+  <div class="d-grid gap-2">
+    <h2 class="text-xl font-semibold text-on-surface m-0">Upload Your Media</h2>
+    <p class="text-sm text-on-surface-variant leading-normal m-0">
+      Present your asset in the best light. Upload high-resolution images
+      showing every detail to build trust with potential bidders.
+    </p>
+  </div>
 
-<label tuiInputFiles>
-  <input
-    accept="image/*"
-    tuiInputFiles
-    [formControl]="control"
-    [multiple]="true"
-  />
-</label>
+  <!-- ── Drop Zone ───────────────────────────────────────────────────────────── -->
+  <label tuiInputFiles class="upload-zone">
+    <input
+      tuiInputFiles
+      accept="image/jpeg,image/png,image/webp"
+      [multiple]="true"
+      [formControl]="control"
+      (reject)="onReject($event)"
+    />
 
-<tui-files class="tui-space_top-1">
-  @for (file of accepted$ | async; track file) {
-    <tui-file [file]="file" (remove)="onRemove(file)" />
+    <div class="d-grid place-items-center gap-5 py-12 px-8">
+      <!-- Icon -->
+      <span
+        [tuiAvatar]="'@tui.cloud-upload'"
+        data-size="xl"
+        class="avatar-color-primary"
+      ></span>
+
+      <!-- Text -->
+      <div class="d-grid gap-2 text-center">
+        <strong class="text-sm font-semibold text-on-surface"
+          >Drop your files here</strong
+        >
+        <p class="text-sm text-on-surface-variant leading-relaxed m-0">
+          Drag and drop your high-resolution images here
+        </p>
+      </div>
+
+      <!-- Format chips -->
+      <div class="d-grid grid-flow-col gap-2">
+        <span tuiChip size="s">
+          <tui-icon icon="@tui.image" />
+          JPEG, PNG, WebP
+        </span>
+        <span tuiChip size="s">
+          <tui-icon icon="@tui.hard-drive" />
+          Up to 25MB
+        </span>
+        <span tuiChip size="s">
+          <tui-icon icon="@tui.monitor" />
+          3000px+ recommended
+        </span>
+      </div>
+    </div>
+  </label>
+
+  <!-- ── Accepted Files ──────────────────────────────────────────────────────── -->
+  @if ((accepted$ | async)?.length) {
+    <tui-files>
+      @for (file of accepted$ | async; track file) {
+        <tui-file [file]="file" (remove)="onRemove($any(file))" />
+      }
+    </tui-files>
   }
 
-  <!-- @for (file of rejected; track file) {
-        <tui-file
-            state="error"
-            [file]="(file | tuiFileRejected: validator | async) || file"
-            (remove)="onRemove(file)"
-        />
-    } -->
-</tui-files>
-
-<button (click)="see()">button</button>
+  <!-- ── Actions ─────────────────────────────────────────────────────────────── -->
+  <div class="d-grid grid-flow-col justify-content-between gap-3">
+    <button
+      tuiButton
+      type="button"
+      appearance="flat"
+      size="l"
+      (click)="back.emit()"
+    >
+      <tui-icon icon="@tui.arrow-left" />
+      Back
+    </button>
+    <button
+      tuiButton
+      type="button"
+      appearance="primary"
+      size="l"
+      (click)="onNext()"
+    >
+      Next Step
+      <tui-icon icon="@tui.arrow-right" />
+    </button>
+  </div>
+</div>

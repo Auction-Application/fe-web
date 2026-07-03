@@ -36,6 +36,10 @@
   border-bottom: 1px solid $outline-variant;
 }
 
+.border-surface-dim {
+  border: 1px solid $surface-dim;
+}
+
 // ─── Shadows ─────────────────────────────────────────────────────────────────
 .shadow-sm {
   box-shadow: 0 1px 3px rgb(0 0 0 / 8%);
@@ -71,4 +75,32 @@
 
 .background {
   background-color: $background;
+}
+
+.bg-inherit {
+  background: inherit;
+}
+
+//padding
+.pd-inl-40 {
+  padding-inline: 40px;
+}
+
+.pd-bl-20 {
+  padding-block: 20px;
+}
+.pd-b-32 {
+  padding-bottom: 32px;
+}
+
+//margin
+.mr-bl-32 {
+  margin-block: 32px;
+}
+
+.mr-t-32 {
+  margin-top: 32px;
+}
+.mr-b-32 {
+  margin-bottom: 32px;
 }

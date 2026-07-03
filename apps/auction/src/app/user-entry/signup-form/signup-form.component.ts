@@ -28,8 +28,8 @@ import { SignupState } from '../signup-page/signup.state';
     TuiLabel,
     TuiIcon,
     ViewContainer,
-    MarkAllAsTouchedDirective,
     ButtonActionDirective,
+    MarkAllAsTouchedDirective,
   ],
 })
 export class SignupFormComponent {

@@ -26,6 +26,7 @@ import {
   skip,
   startWith,
   Subscription,
+  tap,
 } from 'rxjs';
 import { OnTouchedErrorStateMatcher } from './input-error/error-state-matcher.service';
 import { InputErrorComponent } from './input-error/input-error.component';
@@ -65,7 +66,13 @@ export class DynamicValidatorMessage implements OnInit, OnDestroy {
       this.errorMessageTrigger = merge(
         this.ngControl.control.statusChanges,
         this.ngControl.control.events.pipe(
+          tap((value) => {
+            console.log(value);
+          }),
           filter((event) => event instanceof PristineChangeEvent),
+          tap((value) => {
+            console.log(value);
+          }),
         ),
         fromEvent(this.elementRef.nativeElement, 'blur'),
         iif(

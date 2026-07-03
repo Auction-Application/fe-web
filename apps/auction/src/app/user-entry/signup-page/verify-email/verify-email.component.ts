@@ -6,11 +6,7 @@ import { TuiButton, TuiIcon } from '@taiga-ui/core';
 import { TuiInputPin } from '@taiga-ui/kit';
 import { tap } from 'rxjs';
 import { AUTH_ROUTES } from '../../../auth.routes.config';
-import {
-  Action,
-  ButtonActionDirective,
-  MarkAllAsTouchedDirective,
-} from '../../../directives';
+import { Action, ButtonActionDirective } from '../../../directives';
 import { PostUserConfirmSignupResponse } from '../../auth.api.types';
 import { SignupState } from '../signup.state';
 
@@ -23,7 +19,7 @@ import { SignupState } from '../signup.state';
     ViewContainer,
     TuiButton,
     TuiIcon,
-    MarkAllAsTouchedDirective,
+    // MarkAllAsTouchedDirective,
     ButtonActionDirective,
   ],
   templateUrl: './verify-email.html',

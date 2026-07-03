@@ -1,1 +1,144 @@
-<p>pricing works!</p>
+<div class="d-grid grid-cols-form-sidebar gap-8 align-items-start bg-inherit">
+  <!-- ── Left: Form Card ─────────────────────────────────────────────────────── -->
+  <article class="card p-8">
+    <form class="d-grid gap-6" [formGroup]="form">
+      <!-- Opening Bid -->
+      <div class="d-grid gap-1">
+        <span
+          class="text-xs font-semibold uppercase tracking-wide text-on-surface-variant px-1"
+        >
+          Opening Bid (USD)
+        </span>
+        <tui-textfield iconStart="@tui.dollar-sign">
+          <input
+            tuiInput
+            type="number"
+            placeholder="0.00"
+            formControlName="openingBid"
+            libValidationMessage
+            [container]="openingBidView.container"
+          />
+        </tui-textfield>
+        <ng-container libViewContainer #openingBidView="libViewContainer" />
+        <span class="text-xs text-on-surface-variant px-1">
+          The price at which the public bidding will begin.
+        </span>
+      </div>
+
+      <!-- Reserve Price -->
+      <div class="d-grid gap-2">
+        <div class="d-grid grid-cols-label-counter align-items-center gap-3">
+          <div class="d-grid gap-1">
+            <span
+              class="text-xs font-semibold uppercase tracking-wide text-on-surface-variant px-1"
+            >
+              Reserve Price
+            </span>
+            <span class="text-xs text-on-surface-variant px-1">
+              The minimum price you are willing to accept.
+            </span>
+          </div>
+          <input type="checkbox" tuiSwitch formControlName="reserveEnabled" />
+        </div>
+        @if (showReservePrice) {
+          <tui-textfield iconStart="@tui.dollar-sign">
+            <input
+              tuiInput
+              type="number"
+              placeholder="Set Reserve"
+              formControlName="reservePrice"
+              libValidationMessage
+              [container]="reservePriceView.container"
+            />
+          </tui-textfield>
+          <ng-container libViewContainer #reservePriceView="libViewContainer" />
+        }
+      </div>
+
+      <!-- Buy It Now Price -->
+      <div class="d-grid gap-1">
+        <div
+          class="d-grid grid-flow-col gap-2 align-items-center j-self-start px-1"
+        >
+          <span
+            class="text-xs font-semibold uppercase tracking-wide text-on-surface-variant"
+          >
+            Buy It Now Price
+          </span>
+          <span tuiBadge size="s">optional</span>
+        </div>
+        <tui-textfield iconStart="@tui.dollar-sign">
+          <input
+            tuiInput
+            type="number"
+            placeholder="Instant Purchase Price"
+            formControlName="buyItNowPrice"
+          />
+        </tui-textfield>
+        <span class="text-xs text-on-surface-variant px-1">
+          Allows a buyer to purchase the lot immediately and end the auction.
+        </span>
+      </div>
+
+      <!-- Actions -->
+      <div class="d-grid grid-flow-col justify-content-between gap-3 mt-2">
+        <button
+          tuiButton
+          type="button"
+          appearance="flat"
+          size="l"
+          (click)="back.emit()"
+        >
+          <tui-icon icon="@tui.arrow-left" />
+
+          Back
+        </button>
+        <button
+          tuiButton
+          type="button"
+          appearance="primary"
+          size="l"
+          markTouched
+          markDirty
+          (click)="onNext()"
+        >
+          Next Step
+          <tui-icon icon="@tui.arrow-right" />
+        </button>
+      </div>
+    </form>
+  </article>
+
+  <!-- ── Right: Sidebar ─────────────────────────────────────────────────────── -->
+  <aside class="d-grid gap-4">
+    <div class="d-grid gap-2">
+      <h3 class="text-xl font-semibold text-on-surface m-0">
+        Set Your<br />Valuation
+      </h3>
+      <p class="text-sm text-on-surface-variant leading-normal m-0">
+        Defining the right pricing strategy is crucial for a successful auction
+        outcome. Transparency attracts high-value collectors.
+      </p>
+    </div>
+
+    <!-- Market Pulse Card -->
+    <article tuiCardLarge class="bg-secondary-container">
+      <div class="flex-1 d-grid gap-3 p-4">
+        <div class="d-grid grid-flow-col gap-2 align-items-center j-self-start">
+          <span
+            [tuiAvatar]="'@tui.trending-up'"
+            class="avatar-color-primary"
+          ></span>
+          <strong class="text-xs font-semibold uppercase tracking-wider"
+            >Market Pulse</strong
+          >
+        </div>
+        <p class="text-sm leading-relaxed m-0 text-tui-secondary">
+          Similar lots in the 'Modern Art' category have seen a
+          <strong class="text-on-surface">12% increase</strong> in opening bid
+          conversions this month.
+        </p>
+      </div>
+    </article>
+  </aside>
+</div>

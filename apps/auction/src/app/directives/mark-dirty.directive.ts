@@ -2,15 +2,15 @@ import { Directive, inject } from '@angular/core';
 import { ControlContainer } from '@angular/forms';
 
 @Directive({
-  selector: 'button[type="submit"],button[markTouch]',
+  selector: 'button[markDirty]',
   host: {
-    '(click)': 'markFormAsTouched()',
+    '(click)': 'markFormAsDirty()',
   },
 })
-export class MarkAllAsTouchedDirective {
+export class MarkAllAsDirtyDirective {
   readonly #controlContainer = inject(ControlContainer);
 
-  markFormAsTouched() {
-    this.#controlContainer.control?.markAllAsTouched();
+  markFormAsDirty() {
+    this.#controlContainer.control?.markAllAsDirty();
   }
 }

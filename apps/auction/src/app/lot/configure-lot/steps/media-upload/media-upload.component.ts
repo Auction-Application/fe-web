@@ -1,24 +1,52 @@
-import { AsyncPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { AsyncPipe, JsonPipe } from '@angular/common';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { TuiFileLike, TuiFiles, tuiFilesAccepted } from '@taiga-ui/kit';
-import { map } from 'rxjs';
+import { TuiButton, TuiIcon } from '@taiga-ui/core';
+import {
+  TuiAvatar,
+  TuiFileLike,
+  TuiFiles,
+  tuiFilesAccepted,
+} from '@taiga-ui/kit';
+import { TuiChip } from '@taiga-ui/kit/components/chip';
+import { map, shareReplay, tap } from 'rxjs';
 
 @Component({
   selector: 'app-media-upload',
-  imports: [ReactiveFormsModule, TuiFiles, AsyncPipe],
+  imports: [
+    ReactiveFormsModule,
+    TuiFiles,
+    TuiButton,
+    TuiIcon,
+    TuiAvatar,
+    TuiChip,
+    AsyncPipe,
+    JsonPipe,
+  ],
   templateUrl: './media-upload.component.html',
-  styles: ``,
+  styleUrl: './media-upload.component.scss',
+  host: { class: 'bg-inherit' },
 })
 export class MediaUploadComponent {
-  protected readonly control = new FormControl<TuiFileLike | null>(
+  @Output() readonly back = new EventEmitter<void>();
+  @Output() readonly proceeded = new EventEmitter<void>();
+
+  protected readonly control = new FormControl<TuiFileLike[] | null>(
     null,
     Validators.required,
   );
 
   protected readonly accepted$ = this.control.valueChanges.pipe(
+    tap((data) => {
+      console.log(data);
+    }),
     map(() => tuiFilesAccepted(this.control)),
+    tap((data) => {
+      console.log(data);
+    }),
+    shareReplay({ refCount: true, bufferSize: 1 }),
   );
+
   protected rejected: readonly File[] = [];
 
   protected onReject(files: readonly File[]): void {
@@ -28,12 +56,17 @@ export class MediaUploadComponent {
   protected onRemove(file: File): void {
     this.rejected = this.rejected.filter((rejected) => rejected !== file);
     this.control.setValue(
-      //@ts-ignore
-      this.control.value?.filter((current) => current !== file) ?? [],
+      (this.control.value as File[] | null)?.filter(
+        (current) => current !== file,
+      ) ?? [],
     );
   }
 
-  see() {
-    console.log(this.control.value);
+  protected onNext(): void {
+    if (this.control.invalid) {
+      this.control.markAsTouched();
+      return;
+    }
+    this.proceeded.emit();
   }
 }

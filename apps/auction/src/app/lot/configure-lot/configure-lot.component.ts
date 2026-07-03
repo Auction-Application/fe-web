@@ -2,10 +2,16 @@ import { Component } from '@angular/core';
 import { TuiStepper } from '@taiga-ui/kit';
 import { ItemDetailsComponent } from './steps/item-details/item-details.component';
 import { MediaUploadComponent } from './steps/media-upload/media-upload.component';
+import { PricingComponent } from './steps/pricing/pricing.component';
 
 @Component({
   selector: 'app-configure-lot',
-  imports: [TuiStepper, MediaUploadComponent, ItemDetailsComponent],
+  imports: [
+    TuiStepper,
+    MediaUploadComponent,
+    ItemDetailsComponent,
+    PricingComponent,
+  ],
   host: {
     class: 'background',
   },
