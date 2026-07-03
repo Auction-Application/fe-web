@@ -1,10 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { DynamicValidatorMessage, ViewContainer } from '@auction/validators';
 import { TuiButton, TuiIcon, TuiInput } from '@taiga-ui/core';
 import { TuiAvatar, TuiSelect, TuiTextarea } from '@taiga-ui/kit';
@@ -13,6 +8,7 @@ import {
   MarkAllAsDirtyDirective,
   MarkAllAsTouchedDirective,
 } from 'apps/auction/src/app/directives';
+import { ConfigureLotState } from '../../configure-lot.state';
 
 @Component({
   selector: 'app-item-details',
@@ -38,8 +34,10 @@ import {
   ],
 })
 export class ItemDetailsComponent {
-  @Output() readonly cancelled = new EventEmitter<void>();
-  @Output() readonly proceeded = new EventEmitter<void>();
+  // @Output() readonly cancelled = new EventEmitter<void>();
+  // @Output() readonly proceeded = new EventEmitter<void>();
+
+  readonly #lotState = inject(ConfigureLotState);
 
   protected readonly categories = [
     'Paintings & Prints',
@@ -52,24 +50,16 @@ export class ItemDetailsComponent {
     'Asian Art',
   ];
 
-  protected readonly form = new FormGroup({
-    title: new FormControl('', [Validators.required]),
-    category: new FormControl<string | null>(null, [Validators.required]),
-    description: new FormControl('', [
-      Validators.required,
-      Validators.maxLength(500),
-    ]),
-  });
+  protected readonly itemDetailsForm = this.#lotState.itemDetailsForm;
 
   protected get descriptionLength(): number {
-    return this.form.get('description')?.value?.length ?? 0;
+    return this.itemDetailsForm.get('description')?.value?.length ?? 0;
   }
 
-  protected onNext(): void {
-    // if (this.form.invalid) {
-    //   this.form.markAllAsTouched();
-    //   return;
-    // }
-    // this.proceeded.emit();
+  protected nextStep(): void {
+    if (this.itemDetailsForm.invalid) {
+      return;
+    }
+    this.#lotState.nextStep();
   }
 }

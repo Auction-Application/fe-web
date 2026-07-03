@@ -1,22 +1,10 @@
-<!-- <tui-stepper [activeItemIndex]="1">
-  <button stepState="pass" tuiStep>Finished step</button>
-  <button tuiStep>Simple step</button>
-  <button stepState="error" tuiStep>Error step</button>
-  <button disabled tuiStep>Disabled step</button>
-  <button icon="@tui.clock" tuiStep>Step with an icon</button>
-</tui-stepper> -->
-
-<!-- <tui-stepper tuiConnected [activeItemIndex]="1"  orientation="vertical">
-  @for (step of steps; track step) {
-    <button tuiStep>
-      {{ step }}
-    </button>
-  }
-</tui-stepper> -->
-
 <section class="pd-inl-40 bg-inherit">
   <section class="d-grid place-content-center pd-bl-20">
-    <tui-stepper [activeItemIndex]="1" class="bg-inherit">
+    <tui-stepper
+      [activeItemIndex]="lotStateStep()"
+      (activeItemIndexChange)="changeStep($event)"
+      class="bg-inherit"
+    >
       @for (step of steps; track step) {
         <button tuiStep>
           {{ step }}
@@ -26,10 +14,17 @@
   </section>
 
   <section class="mr-t-32 d-block bg-inherit pd-b-32">
-    <app-item-details></app-item-details>
-    <app-media-upload></app-media-upload>
-    <app-pricing></app-pricing>
+    @switch (lotStateStep()) {
+      @case (0) {
+        <app-item-details></app-item-details>
+      }
+      @case (1) {
+        <app-media-upload></app-media-upload>
+      }
+
+      @case (2) {
+        <app-pricing></app-pricing>
+      }
+    }
   </section>
 </section>
-
-<!-- <app-media-upload></app-media-upload> -->

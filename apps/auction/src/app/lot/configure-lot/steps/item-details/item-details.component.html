@@ -9,7 +9,7 @@
       </p>
     </div>
 
-    <form class="d-grid gap-5" [formGroup]="form">
+    <form class="d-grid gap-5" [formGroup]="itemDetailsForm">
       <!-- Lot Title -->
       <div class="d-grid gap-1">
         <div class="d-grid grid-cols-label-counter px-1">
@@ -87,13 +87,7 @@
 
       <!-- Actions -->
       <div class="d-grid grid-flow-col justify-content-between gap-3 mt-2">
-        <button
-          tuiButton
-          type="button"
-          appearance="flat"
-          size="l"
-          (click)="cancelled.emit()"
-        >
+        <button tuiButton type="button" appearance="flat" size="l">
           Cancel
         </button>
         <button
@@ -103,7 +97,7 @@
           size="l"
           markTouched
           markDirty
-          (click)="onNext()"
+          (click)="nextStep()"
         >
           Next Step
           <tui-icon icon="@tui.arrow-right" />

@@ -1,7 +1,7 @@
 <div class="d-grid grid-cols-form-sidebar gap-8 align-items-start bg-inherit">
   <!-- ── Left: Form Card ─────────────────────────────────────────────────────── -->
   <article class="card p-8">
-    <form class="d-grid gap-6" [formGroup]="form">
+    <form class="d-grid gap-6" [formGroup]="lotPriceForm">
       <!-- Opening Bid -->
       <div class="d-grid gap-1">
         <span
@@ -87,7 +87,7 @@
           type="button"
           appearance="flat"
           size="l"
-          (click)="back.emit()"
+          (click)="previousStep()"
         >
           <tui-icon icon="@tui.arrow-left" />
 
@@ -100,7 +100,7 @@
           size="l"
           markTouched
           markDirty
-          (click)="onNext()"
+          (click)="nextStep()"
         >
           Next Step
           <tui-icon icon="@tui.arrow-right" />

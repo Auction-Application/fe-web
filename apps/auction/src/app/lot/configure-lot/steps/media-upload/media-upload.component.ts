@@ -1,15 +1,10 @@
 import { AsyncPipe, JsonPipe } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { TuiButton, TuiIcon } from '@taiga-ui/core';
-import {
-  TuiAvatar,
-  TuiFileLike,
-  TuiFiles,
-  tuiFilesAccepted,
-} from '@taiga-ui/kit';
+import { TuiAvatar, TuiFiles } from '@taiga-ui/kit';
 import { TuiChip } from '@taiga-ui/kit/components/chip';
-import { map, shareReplay, tap } from 'rxjs';
+import { ConfigureLotState } from '../../configure-lot.state';
 
 @Component({
   selector: 'app-media-upload',
@@ -30,23 +25,11 @@ import { map, shareReplay, tap } from 'rxjs';
 export class MediaUploadComponent {
   @Output() readonly back = new EventEmitter<void>();
   @Output() readonly proceeded = new EventEmitter<void>();
+  readonly #lotState = inject(ConfigureLotState);
 
-  protected readonly control = new FormControl<TuiFileLike[] | null>(
-    null,
-    Validators.required,
-  );
+  protected readonly mediaUploadControl = this.#lotState.mediaUploadForm;
 
-  protected readonly accepted$ = this.control.valueChanges.pipe(
-    tap((data) => {
-      console.log(data);
-    }),
-    map(() => tuiFilesAccepted(this.control)),
-    tap((data) => {
-      console.log(data);
-    }),
-    shareReplay({ refCount: true, bufferSize: 1 }),
-  );
-
+  protected readonly acceptedFiles = this.#lotState.acceptedFiles;
   protected rejected: readonly File[] = [];
 
   protected onReject(files: readonly File[]): void {
@@ -55,18 +38,21 @@ export class MediaUploadComponent {
 
   protected onRemove(file: File): void {
     this.rejected = this.rejected.filter((rejected) => rejected !== file);
-    this.control.setValue(
-      (this.control.value as File[] | null)?.filter(
+    this.mediaUploadControl.setValue(
+      (this.mediaUploadControl.value as File[] | null)?.filter(
         (current) => current !== file,
       ) ?? [],
     );
   }
 
-  protected onNext(): void {
-    if (this.control.invalid) {
-      this.control.markAsTouched();
+  protected previousStep() {
+    this.#lotState.previousStep();
+  }
+
+  protected nextStep(): void {
+    if (this.mediaUploadControl.invalid) {
       return;
     }
-    this.proceeded.emit();
+    this.#lotState.nextStep();
   }
 }

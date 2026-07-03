@@ -1,19 +1,14 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { DynamicValidatorMessage, ViewContainer } from '@auction/validators';
 import { TuiButton, TuiIcon, TuiInput } from '@taiga-ui/core';
-import { TuiBadge, TuiSwitch } from '@taiga-ui/kit';
+import { TuiAvatar, TuiBadge, TuiSwitch } from '@taiga-ui/kit';
 import { TuiCard, TuiCardLarge } from '@taiga-ui/layout';
 import {
   MarkAllAsDirtyDirective,
   MarkAllAsTouchedDirective,
 } from 'apps/auction/src/app/directives';
-import { TuiAvatar } from '@taiga-ui/kit';
+import { ConfigureLotState } from '../../configure-lot.state';
 
 @Component({
   selector: 'app-pricing',
@@ -36,28 +31,24 @@ import { TuiAvatar } from '@taiga-ui/kit';
   ],
 })
 export class PricingComponent {
-  @Output() readonly back = new EventEmitter<void>();
+  // @Output() readonly back = new EventEmitter<void>();
   @Output() readonly proceeded = new EventEmitter<void>();
 
-  protected readonly form = new FormGroup({
-    openingBid: new FormControl<number | null>(null, [
-      Validators.required,
-      Validators.min(0),
-    ]),
-    reserveEnabled: new FormControl(false),
-    reservePrice: new FormControl<number | null>(null),
-    buyItNowPrice: new FormControl<number | null>(null),
-  });
+  readonly #lotState = inject(ConfigureLotState);
+
+  protected readonly lotPriceForm = this.#lotState.lotPriceForm;
 
   protected get showReservePrice(): boolean {
-    return !!this.form.get('reserveEnabled')?.value;
+    return !!this.lotPriceForm.get('reserveEnabled')?.value;
   }
 
-  protected onNext(): void {
-    if (this.form.invalid) {
-      this.form.markAllAsTouched();
+  protected nextStep(): void {
+    if (this.lotPriceForm.invalid) {
       return;
     }
-    this.proceeded.emit();
+  }
+
+  protected previousStep() {
+    this.#lotState.previousStep();
   }
 }
