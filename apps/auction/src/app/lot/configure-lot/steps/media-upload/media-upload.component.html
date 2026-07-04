@@ -11,6 +11,7 @@
   <!-- ── Drop Zone ───────────────────────────────────────────────────────────── -->
   <label tuiInputFiles class="upload-zone">
     <input
+      #validator="tuiInputFilesValidator"
       tuiInputFiles
       accept="image/jpeg,image/png,image/webp"
       [multiple]="true"
@@ -55,12 +56,25 @@
   </label>
 
   <!-- ── Accepted Files ──────────────────────────────────────────────────────── -->
-  @if (acceptedFiles()?.length) {
-    <tui-files>
-      @for (file of acceptedFiles(); track file) {
-        <tui-file [file]="file" (remove)="onRemove($any(file))" />
+  <!-- @if (acceptedFiles()?.length) { -->
+  <tui-files>
+    @for (file of acceptedFiles(); track file) {
+      <tui-file [file]="file" (remove)="onRemove($any(file))" />
+    }
+  </tui-files>
+  <!-- } -->
+
+  @if (rejected.length) {
+    <section>
+      <div class="text-sm font-semibold text-on-surface mr-b-8">Rejected:</div>
+      @for (file of rejected; track file) {
+        <tui-file
+          state="error"
+          [file]="(file | tuiFileRejected: validator | async) || file"
+          (remove)="onRemove(file)"
+        />
       }
-    </tui-files>
+    </section>
   }
 
   <!-- ── Actions ─────────────────────────────────────────────────────────────── -->
