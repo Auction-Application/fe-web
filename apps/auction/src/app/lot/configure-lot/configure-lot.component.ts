@@ -23,7 +23,8 @@ import { PricingComponent } from './steps/pricing/pricing.component';
 export class ConfigureLotComponent {
   readonly #lotState = inject(ConfigureLotState);
   lotStateStep = this.#lotState.activeStep;
-  protected readonly steps = ['Item Details', 'Images', 'Pricing', 'Shipping'];
+  // protected readonly steps = ['Item Details', 'Images', 'Pricing', 'Shipping'];
+  protected readonly steps = ['Item Details', 'Pricing', 'Images'];
 
   protected changeStep(stepIndex: number) {
     this.#lotState.changeStep(stepIndex);

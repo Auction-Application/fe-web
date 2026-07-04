@@ -1,4 +1,4 @@
-import { AsyncPipe, JsonPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TuiButton, TuiIcon } from '@taiga-ui/core';
@@ -16,7 +16,6 @@ import { ConfigureLotState } from '../../configure-lot.state';
     TuiAvatar,
     TuiChip,
     AsyncPipe,
-    JsonPipe,
   ],
   templateUrl: './media-upload.component.html',
   styleUrl: './media-upload.component.scss',
@@ -49,10 +48,10 @@ export class MediaUploadComponent {
     this.#lotState.previousStep();
   }
 
-  protected nextStep(): void {
-    if (this.mediaUploadControl.invalid) {
-      return;
-    }
-    this.#lotState.nextStep();
-  }
+  // protected nextStep(): void {
+  //   if (this.mediaUploadControl.invalid) {
+  //     return;
+  //   }
+  //   this.#lotState.nextStep();
+  // }
 }

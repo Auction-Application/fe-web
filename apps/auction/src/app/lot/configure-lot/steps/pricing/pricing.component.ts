@@ -5,9 +5,12 @@ import { TuiButton, TuiIcon, TuiInput } from '@taiga-ui/core';
 import { TuiAvatar, TuiBadge, TuiSwitch } from '@taiga-ui/kit';
 import { TuiCard, TuiCardLarge } from '@taiga-ui/layout';
 import {
+  Action,
+  ButtonActionDirective,
   MarkAllAsDirtyDirective,
   MarkAllAsTouchedDirective,
 } from 'apps/auction/src/app/directives';
+import { ConfigureLotApi } from '../../configure-lot.api';
 import { ConfigureLotState } from '../../configure-lot.state';
 
 @Component({
@@ -28,6 +31,7 @@ import { ConfigureLotState } from '../../configure-lot.state';
     TuiCardLarge,
     MarkAllAsTouchedDirective,
     MarkAllAsDirtyDirective,
+    ButtonActionDirective,
   ],
 })
 export class PricingComponent {
@@ -42,13 +46,33 @@ export class PricingComponent {
     return !!this.lotPriceForm.get('reserveEnabled')?.value;
   }
 
-  protected nextStep(): void {
-    if (this.lotPriceForm.invalid) {
-      return;
-    }
-  }
+  //  protected nextStep(): void {
+  //   if (this.lotPriceForm.invalid) {
+  //     return;
+  //   }
+  //   this.#lotState.nextStep();
+  // }
 
   protected previousStep() {
     this.#lotState.previousStep();
   }
+
+  readonly #configureLotApi = inject(ConfigureLotApi);
+
+  protected readonly createAuctionLot = new Action<unknown, any>(
+    () => {
+      return this.#configureLotApi.createAuctionLot({ me: 'haha' }).pipe();
+    },
+    () => {
+      // if (!this.loginForm.valid) {
+      //   return {
+      //     mode: 'ignore',
+      //   };
+      // }
+
+      return {
+        mode: 'keep',
+      };
+    },
+  );
 }
