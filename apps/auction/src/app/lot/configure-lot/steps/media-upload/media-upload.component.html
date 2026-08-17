@@ -13,7 +13,7 @@
     <input
       #validator="tuiInputFilesValidator"
       tuiInputFiles
-      accept="image/jpeg,image/png,image/webp"
+      accept="image/jpeg,image/png,image/webp,.tif"
       [multiple]="true"
       [formControl]="mediaUploadControl"
       (reject)="onReject($event)"
@@ -99,7 +99,13 @@
       Next Step
       <tui-icon icon="@tui.arrow-right" />
     </button> -->
-    <button tuiButton type="button" appearance="primary" size="l">
+    <button
+      tuiButton
+      type="button"
+      appearance="primary"
+      size="l"
+      [action]="uploadMedia"
+    >
       Upload Images
     </button>
   </div>

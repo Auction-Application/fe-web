@@ -15,7 +15,7 @@ import {
 export class Action<T, K = unknown> {
   #metaData: T | null = null;
 
-  readonly #resultSubj = new ReplaySubject(1);
+  readonly #resultSubj = new ReplaySubject<K>(1);
   readonly actionResult$ = this.#resultSubj.asObservable();
 
   readonly #actionSubj = new Subject<ActionableConfig>();

@@ -28,7 +28,7 @@ import { Action } from './action';
     '(click)': 'startAction()',
   },
 })
-export class ButtonActionDirective<T> implements OnChanges {
+export class ButtonActionDirective<T, K> implements OnChanges {
   metaDataInput = input<T | null>(null, { alias: 'metaData' });
 
   actionState = input<ActionState>(inject(ACTION_STATE));
@@ -39,12 +39,12 @@ export class ButtonActionDirective<T> implements OnChanges {
   readonly #destroySubj = new Subject<void>();
   readonly #destroyRef = inject(DestroyRef);
 
-  action = input.required<Action<T>>();
+  action = input.required<Action<T, K>>();
 
   ngOnChanges(
     changes: SimpleChanges<{
       metaDataInput: InputSignal<T>;
-      action: InputSignal<Action<T>>;
+      action: InputSignal<Action<T, K>>;
     }>,
   ): void {
     if (changes.action) {

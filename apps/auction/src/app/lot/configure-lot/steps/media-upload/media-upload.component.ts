@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TuiButton, TuiIcon } from '@taiga-ui/core';
 import { TuiAvatar, TuiFiles } from '@taiga-ui/kit';
 import { TuiChip } from '@taiga-ui/kit/components/chip';
+import { ButtonActionDirective } from 'apps/auction/src/app/directives';
 import { ConfigureLotState } from '../../configure-lot.state';
 
 @Component({
@@ -16,6 +17,7 @@ import { ConfigureLotState } from '../../configure-lot.state';
     TuiAvatar,
     TuiChip,
     AsyncPipe,
+    ButtonActionDirective,
   ],
   templateUrl: './media-upload.component.html',
   styleUrl: './media-upload.component.scss',
@@ -43,6 +45,8 @@ export class MediaUploadComponent {
       ) ?? [],
     );
   }
+
+  protected readonly uploadMedia = this.#lotState.uploadMedia;
 
   protected previousStep() {
     this.#lotState.previousStep();

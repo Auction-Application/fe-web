@@ -5,7 +5,6 @@ import { TuiButton, TuiIcon, TuiInput } from '@taiga-ui/core';
 import { TuiAvatar, TuiBadge, TuiSwitch } from '@taiga-ui/kit';
 import { TuiCard, TuiCardLarge } from '@taiga-ui/layout';
 import {
-  Action,
   ButtonActionDirective,
   MarkAllAsDirtyDirective,
   MarkAllAsTouchedDirective,
@@ -59,20 +58,5 @@ export class PricingComponent {
 
   readonly #configureLotApi = inject(ConfigureLotApi);
 
-  protected readonly createAuctionLot = new Action<unknown, any>(
-    () => {
-      return this.#configureLotApi.createAuctionLot({ me: 'haha' }).pipe();
-    },
-    () => {
-      // if (!this.loginForm.valid) {
-      //   return {
-      //     mode: 'ignore',
-      //   };
-      // }
-
-      return {
-        mode: 'keep',
-      };
-    },
-  );
+  protected readonly createAuctionLot = this.#lotState.createAuctionLot;
 }
