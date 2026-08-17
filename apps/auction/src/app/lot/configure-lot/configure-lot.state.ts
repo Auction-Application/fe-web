@@ -1,9 +1,4 @@
-import {
-  HttpBackend,
-  HttpClient,
-  HttpRequest,
-  HttpResponse,
-} from '@angular/common/http';
+import { HttpBackend, HttpRequest, HttpResponse } from '@angular/common/http';
 import {
   computed,
   DestroyRef,
@@ -184,7 +179,6 @@ export class ConfigureLotState {
   );
 
   readonly #httpBackend = inject(HttpBackend);
-  readonly #httpClient = inject(HttpClient);
   readonly #destroyRef = inject(DestroyRef);
 
   #getFileByClientId(clientFileId: number): File | undefined {

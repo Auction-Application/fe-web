@@ -22,7 +22,6 @@ export type SinglePresignedFile = {
 export type MultiPresignedFile = {
   multi: {
     multiParts: MultiPart[];
-    uploadId: string;
     partSize: string;
     multipartAttemptId: string;
   };
