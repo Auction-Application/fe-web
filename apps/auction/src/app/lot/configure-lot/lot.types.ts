@@ -16,7 +16,9 @@ export type PresignedFile = {
 };
 
 export type SinglePresignedFile = {
-  single: RequestUrl;
+  single: {
+    request: RequestUrl;
+  };
 };
 
 export type MultiPresignedFile = {
@@ -37,5 +39,11 @@ export type PutMethod = 'PUT';
 export type RequestUrl = {
   url: string;
   method: PutMethod;
-  signedHeader: null;
+  signedHeader: SignedHeaders;
+};
+
+export type SignedHeaders = {
+  [key: string]: {
+    values: [string];
+  };
 };

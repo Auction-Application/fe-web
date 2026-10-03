@@ -1,4 +1,9 @@
-import { HttpBackend, HttpRequest, HttpResponse } from '@angular/common/http';
+import {
+  HttpBackend,
+  HttpHeaders,
+  HttpRequest,
+  HttpResponse,
+} from '@angular/common/http';
 import {
   computed,
   DestroyRef,
@@ -34,6 +39,7 @@ import {
   LotImage,
   MultiPresignedFile,
   PresignedFile,
+  SignedHeaders,
   SinglePresignedFile,
 } from './lot.types';
 import { sha256FromBlob } from './lot.utils';
@@ -188,8 +194,20 @@ export class ConfigureLotState {
   }
 
   #uploadSingleFile(file: File, { single }: SinglePresignedFile) {
-    const httpReq = new HttpRequest(single.method, single.url, file);
-    return this.#httpBackend.handle(httpReq).pipe(catchError(() => EMPTY));
+    const httpReq = new HttpRequest(
+      single.request.method,
+      single.request.url,
+      file,
+      {
+        headers: new HttpHeaders(createHeaders(single.request.signedHeader)),
+      },
+    );
+    return this.#httpBackend.handle(httpReq).pipe(
+      catchError((err) => {
+        console.error(err);
+        return EMPTY;
+      }),
+    );
   }
 
   #uploadMultipartFile(
@@ -259,4 +277,16 @@ function isSingleFile(
   file: SinglePresignedFile | MultiPresignedFile,
 ): file is SinglePresignedFile {
   return Boolean((file as SinglePresignedFile).single);
+}
+
+function createHeaders(signedHeaders: SignedHeaders): {
+  [key: string]: string;
+} {
+  const headers: Record<string, string> = {};
+  Object.entries(signedHeaders).map(([headerKey, headerValue]) => {
+    if (headerKey.toLowerCase() !== 'host') {
+      headers[headerKey] = headerValue.values[0];
+    }
+  });
+  return headers;
 }
