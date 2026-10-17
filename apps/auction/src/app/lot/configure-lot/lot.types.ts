@@ -1,3 +1,5 @@
+import { PartEtag } from './lot.api.types';
+
 export type LotImage = {
   sha256: string;
   fileName: string;
@@ -26,6 +28,7 @@ export type MultiPresignedFile = {
     multiParts: MultiPart[];
     partSize: string;
     multipartAttemptId: string;
+    uploadedEtags: PartEtag[];
   };
 };
 

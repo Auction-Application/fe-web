@@ -241,8 +241,9 @@ export class ConfigureLotState {
         }),
         toArray(),
         mergeMap((parts) => {
+          const partsPayload = [...multi.uploadedEtags, ...parts];
           return this.#configureLotApi
-            .completeMultiPartUpload(multi.multipartAttemptId, parts)
+            .completeMultiPartUpload(multi.multipartAttemptId, partsPayload)
             .pipe(catchError(() => EMPTY));
         }),
       ),
